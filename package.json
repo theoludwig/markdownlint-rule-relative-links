@@ -1,0 +1,62 @@
+{
+  "name": "markdownlint-rule-relative-links",
+  "version": "0.0.0-development",
+  "public": true,
+  "description": "Custom rule for markdownlint to validate relative links.",
+  "author": "Divlo <contact@divlo.fr>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Divlo/markdownlint-rule-relative-links.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Divlo/markdownlint-rule-relative-links/issues"
+  },
+  "homepage": "https://github.com/Divlo/markdownlint-rule-relative-links#readme",
+  "keywords": [
+    "markdownlint",
+    "markdownlint-rule"
+  ],
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "scripts": {
+    "lint:commit": "commitlint",
+    "lint:editorconfig": "editorconfig-checker",
+    "lint:markdown": "markdownlint-cli2",
+    "lint:eslint": "eslint \"**/*.{js,jsx,ts,tsx}\" --ignore-path \".gitignore\"",
+    "lint:prettier": "prettier \".\" --check --ignore-path \".gitignore\"",
+    "lint:staged": "lint-staged",
+    "test": "tap",
+    "release": "semantic-release",
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.3.0",
+    "@commitlint/config-conventional": "17.3.0",
+    "@types/tap": "15.0.7",
+    "editorconfig-checker": "4.0.2",
+    "eslint": "8.31.0",
+    "eslint-config-conventions": "6.0.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-promise": "6.1.1",
+    "eslint-plugin-unicorn": "45.0.2",
+    "husky": "8.0.2",
+    "lint-staged": "13.1.0",
+    "markdownlint": "0.27.0",
+    "markdownlint-cli2": "0.6.0",
+    "pinst": "3.0.0",
+    "prettier": "2.8.1",
+    "semantic-release": "19.0.5",
+    "tap": "16.3.2"
+  }
+}
