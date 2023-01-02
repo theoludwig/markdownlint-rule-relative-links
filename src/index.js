@@ -56,22 +56,37 @@ const customRule = {
     filterTokens(params, 'inline', (token) => {
       token.children.forEach((child) => {
         const { lineNumber, type, attrs } = child
+
+        /** @type {string | null} */
+        let hrefSrc = null
+
         if (type === 'link_open') {
           attrs.forEach((attr) => {
             if (attr[0] === 'href') {
-              const href = attr[1]
-              const url = new URL(href, pathToFileURL(params.name))
-              url.hash = ''
-              const isRelative =
-                href.startsWith('./') ||
-                href.startsWith('../') ||
-                !EXTERNAL_PROTOCOLS.has(url.protocol)
-              if (isRelative && !fs.existsSync(url.pathname)) {
-                const detail = `Link "${href}" is dead`
-                addError(onError, lineNumber, detail)
-              }
+              hrefSrc = attr[1]
             }
           })
+        }
+
+        if (type === 'image') {
+          attrs.forEach((attr) => {
+            if (attr[0] === 'src') {
+              hrefSrc = attr[1]
+            }
+          })
+        }
+
+        if (hrefSrc != null) {
+          const url = new URL(hrefSrc, pathToFileURL(params.name))
+          url.hash = ''
+          const isRelative =
+            hrefSrc.startsWith('./') ||
+            hrefSrc.startsWith('../') ||
+            !EXTERNAL_PROTOCOLS.has(url.protocol)
+          if (isRelative && !fs.existsSync(url.pathname)) {
+            const detail = `Link "${hrefSrc}" is dead`
+            addError(onError, lineNumber, detail)
+          }
         }
       })
     })
