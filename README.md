@@ -4,15 +4,13 @@
   <strong>Custom rule for <a href="https://github.com/DavidAnson/markdownlint">markdownlint</a> to validate relative links.</strong>
 </p>
 
-</p>
-
 <p align="center">
   <a href="./CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat" /></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/licence-MIT-blue.svg" alt="Licence MIT"/></a>
   <a href="./CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg" alt="Contributor Covenant" /></a>
   <br />
   <a href="https://github.com/Divlo/markdownlint-rule-relative-links/actions/workflows/lint.yml"><img src="https://github.com/Divlo/markdownlint-rule-relative-links/actions/workflows/lint.yml/badge.svg?branch=develop" /></a>
-  <a href="https://github.com/Divlo/emarkdownlint-rule-relative-linksactions/workflows/test.yml"><img src="https://github.com/Divlo/markdownlint-rule-relative-links/actions/workflows/test.yml/badge.svg?branch=develop" /></a>
+  <a href="https://github.com/Divlo/markdownlint-rule-relative-linksactions/workflows/test.yml"><img src="https://github.com/Divlo/markdownlint-rule-relative-links/actions/workflows/test.yml/badge.svg?branch=develop" /></a>
   <br />
   <a href="https://conventionalcommits.org"><img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg" alt="Conventional Commits" /></a>
   <a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release" /></a>
