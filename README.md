@@ -21,9 +21,32 @@
 
 **markdownlint-rule-relative-links** is a [markdownlint](https://github.com/DavidAnson/markdownlint) custom rule to validate relative links.
 
-It ensures that relative links that start with `./` or `../` (or not starting with external protocols like `http://` or `https://`) are working and not "dead" which means that it exists in the file system of the project that uses `markdownlint`.
+It ensures that relative links (using `file:` protocol) are working and not "dead" which means that it exists in the file system of the project that uses `markdownlint`.
 
-Related links:
+### Example
+
+File structure:
+
+```txt
+├── abc.txt
+└── awesome.md
+```
+
+With `awesome.md` content:
+
+```md
+[abc](./abc.txt)
+
+[Dead link](./dead.txt)
+```
+
+Running `markdownlint-cli2` with `markdownlint-rule-relative-links` will output:
+
+```sh
+awesome.md:3 relative-links Relative links should be valid [Link "./dead.txt" is dead]
+```
+
+### Related links
 
 - [DavidAnson/markdownlint#253](https://github.com/DavidAnson/markdownlint/issues/253)
 - [DavidAnson/markdownlint#121](https://github.com/DavidAnson/markdownlint/issues/121)

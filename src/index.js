@@ -40,14 +40,6 @@ const addError = (onError, lineNumber, detail, context, range, fixInfo) => {
   })
 }
 
-const EXTERNAL_PROTOCOLS = new Set([
-  'http:',
-  'https:',
-  'mailto:',
-  'tel:',
-  'ftp:'
-])
-
 const customRule = {
   names: ['relative-links'],
   description: 'Relative links should be valid',
@@ -79,11 +71,8 @@ const customRule = {
         if (hrefSrc != null) {
           const url = new URL(hrefSrc, pathToFileURL(params.name))
           url.hash = ''
-          const isRelative =
-            hrefSrc.startsWith('./') ||
-            hrefSrc.startsWith('../') ||
-            !EXTERNAL_PROTOCOLS.has(url.protocol)
-          if (isRelative && !fs.existsSync(url.pathname)) {
+          const isRelative = url.protocol === 'file:'
+          if (isRelative && !fs.existsSync(url)) {
             const detail = `Link "${hrefSrc}" is dead`
             addError(onError, lineNumber, detail)
           }
