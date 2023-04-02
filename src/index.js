@@ -71,7 +71,8 @@ const customRule = {
         if (hrefSrc != null) {
           const url = new URL(hrefSrc, pathToFileURL(params.name))
           url.hash = ''
-          const isRelative = url.protocol === 'file:'
+          const isRelative =
+            url.protocol === 'file:' && !hrefSrc.startsWith('/')
           if (isRelative && !fs.existsSync(url)) {
             const detail = `Link "${hrefSrc}" is dead`
             addError(onError, lineNumber, detail)
