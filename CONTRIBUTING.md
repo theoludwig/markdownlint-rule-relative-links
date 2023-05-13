@@ -2,6 +2,14 @@
 
 Thanks a lot for your interest in contributing to **markdownlint-rule-relative-links**! 🎉
 
+## Code of Conduct
+
+**markdownlint-rule-relative-links** adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as its Code of Conduct, and we expect project participants to adhere to it. Please read [the full text](./CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+
+## Open Development
+
+All work on **markdownlint-rule-relative-links** happens directly on this repository. Both core team members and external contributors send pull requests which go through the same review process.
+
 ## Types of contributions
 
 - Reporting a bug.
@@ -21,26 +29,4 @@ If you're adding new features to **markdownlint-rule-relative-links**, please in
 
 ## Commits
 
-The commit message guidelines respect [@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional) and [Semantic Versioning](https://semver.org/) for releases.
-
-### Types
-
-Types define which kind of changes you made to the project.
-
-| Types    | Description                                                                                                  |
-| -------- | ------------------------------------------------------------------------------------------------------------ |
-| feat     | A new feature.                                                                                               |
-| fix      | A bug fix.                                                                                                   |
-| docs     | Documentation only changes.                                                                                  |
-| style    | Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc).      |
-| refactor | A code change that neither fixes a bug nor adds a feature.                                                   |
-| perf     | A code change that improves performance.                                                                     |
-| test     | Adding missing tests or correcting existing tests.                                                           |
-| build    | Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm).         |
-| ci       | Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs). |
-| chore    | Other changes that don't modify src or test files.                                                           |
-| revert   | Reverts a previous commit.                                                                                   |
-
-### Scopes
-
-Scopes define what part of the code changed.
+The commit message guidelines adheres to [Conventional Commits](https://www.conventionalcommits.org/) and [Semantic Versioning](https://semver.org/) for releases.

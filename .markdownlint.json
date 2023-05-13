@@ -1,8 +1,0 @@
-{
-  "default": true,
-  "relative-links": true,
-  "extends": "markdownlint/style/prettier",
-  "MD024": false,
-  "MD033": false,
-  "MD041": false
-}

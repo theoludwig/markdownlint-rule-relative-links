@@ -21,7 +21,7 @@
 
 **markdownlint-rule-relative-links** is a [markdownlint](https://github.com/DavidAnson/markdownlint) custom rule to validate relative links.
 
-It ensures that relative links (using `file:` protocol) are working and not "dead" which means that it exists in the file system of the project that uses `markdownlint`.
+It ensures that relative links (using `file:` protocol) are working and not "dead" which means that it exists in the file system of the project that uses [markdownlint](https://github.com/DavidAnson/markdownlint).
 
 ### Example
 
@@ -40,7 +40,7 @@ With `awesome.md` content:
 [Dead link](./dead.txt)
 ```
 
-Running `markdownlint-cli2` with `markdownlint-rule-relative-links` will output:
+Running [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) with `markdownlint-rule-relative-links` will output:
 
 ```sh
 awesome.md:3 relative-links Relative links should be valid [Link "./dead.txt" is dead]
@@ -64,9 +64,9 @@ npm install --save-dev markdownlint-rule-relative-links
 
 ## Configuration
 
-There are various ways `markdownlint` can be configured using objects, config files etc. For more information on `markdownlint` configuration refer [options.config](https://github.com/DavidAnson/markdownlint#optionsconfig).
+There are various ways [markdownlint](https://github.com/DavidAnson/markdownlint) can be configured using objects, config files etc. For more information on configuration refer to [options.config](https://github.com/DavidAnson/markdownlint#optionsconfig).
 
-We recommend configuring `markdownlint-cli2` over `markdownlint-cli` for compatibility with the `vscode-markdownlint` plugin.
+We recommend configuring [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) over [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) for compatibility with the [vscode-markdownlint](https://github.com/DavidAnson/vscode-markdownlint) extension.
 
 `.markdownlint-cli2.jsonc`
 
