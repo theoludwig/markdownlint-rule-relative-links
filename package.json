@@ -42,6 +42,9 @@
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
   },
+  "dependencies": {
+    "markdown-it": "13.0.1"
+  },
   "devDependencies": {
     "@commitlint/cli": "17.6.5",
     "@commitlint/config-conventional": "17.6.5",
