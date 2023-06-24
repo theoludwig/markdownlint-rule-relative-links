@@ -19,7 +19,7 @@ All work on **markdownlint-rule-relative-links** happens directly on this reposi
 
 ## Pull Requests
 
-- **Please first discuss** the change you wish to make via [issue](https://github.com/Divlo/markdownlint-rule-relative-links/issues) before making a change. It might avoid a waste of your time.
+- **Please first discuss** the change you wish to make via [issue](https://github.com/theoludwig/markdownlint-rule-relative-links/issues) before making a change. It might avoid a waste of your time.
 
 - Ensure your code respect linting.
 

@@ -3,16 +3,16 @@
   "version": "0.0.0-development",
   "public": true,
   "description": "Custom rule for markdownlint to validate relative links.",
-  "author": "Divlo <contact@divlo.fr>",
+  "author": "Théo LUDWIG <contact@theoludwig.fr>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Divlo/markdownlint-rule-relative-links.git"
+    "url": "https://github.com/theoludwig/markdownlint-rule-relative-links.git"
   },
   "bugs": {
-    "url": "https://github.com/Divlo/markdownlint-rule-relative-links/issues"
+    "url": "https://github.com/theoludwig/markdownlint-rule-relative-links/issues"
   },
-  "homepage": "https://github.com/Divlo/markdownlint-rule-relative-links#readme",
+  "homepage": "https://github.com/theoludwig/markdownlint-rule-relative-links#readme",
   "keywords": [
     "markdownlint",
     "markdownlint-rule"
