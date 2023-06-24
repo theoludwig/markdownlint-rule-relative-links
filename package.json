@@ -33,21 +33,21 @@
     "lint:commit": "commitlint",
     "lint:editorconfig": "editorconfig-checker",
     "lint:markdown": "markdownlint-cli2",
-    "lint:eslint": "eslint \".\" --ignore-path \".gitignore\"",
-    "lint:prettier": "prettier \".\" --check --ignore-path \".gitignore\"",
+    "lint:eslint": "eslint . --ignore-path .gitignore",
+    "lint:prettier": "prettier . --check --ignore-path .gitignore",
     "lint:staged": "lint-staged",
-    "test": "tap",
+    "test": "node --test ./test",
     "release": "semantic-release",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.6.3",
-    "@commitlint/config-conventional": "17.6.3",
-    "@types/tap": "15.0.8",
+    "@commitlint/cli": "17.6.5",
+    "@commitlint/config-conventional": "17.6.5",
+    "@types/node": "20.3.1",
     "editorconfig-checker": "5.0.1",
-    "eslint": "8.40.0",
+    "eslint": "8.43.0",
     "eslint-config-conventions": "9.0.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-plugin-import": "2.27.5",
@@ -56,11 +56,10 @@
     "eslint-plugin-unicorn": "47.0.0",
     "husky": "8.0.3",
     "lint-staged": "13.2.2",
-    "markdownlint": "0.28.2",
-    "markdownlint-cli2": "0.7.1",
+    "markdownlint": "0.29.0",
+    "markdownlint-cli2": "0.8.1",
     "pinst": "3.0.0",
     "prettier": "2.8.8",
-    "semantic-release": "21.0.2",
-    "tap": "16.3.4"
+    "semantic-release": "21.0.5"
   }
 }
