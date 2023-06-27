@@ -23,7 +23,7 @@ test('ensure the rule validate correctly', async () => {
   )
   assert.equal(
     lintResults['test/fixtures/Invalid.md'][0]?.errorDetail,
-    'Link "./basic.test.js" is not valid'
+    'Link "./basic.test.js" should exist in the file system'
   )
 
   assert.equal(
@@ -32,7 +32,7 @@ test('ensure the rule validate correctly', async () => {
   )
   assert.equal(
     lintResults['test/fixtures/Invalid.md'][1]?.errorDetail,
-    'Link "../image.png" is not valid'
+    'Link "../image.png" should exist in the file system'
   )
 
   assert.equal(
@@ -41,6 +41,6 @@ test('ensure the rule validate correctly', async () => {
   )
   assert.equal(
     lintResults['test/fixtures/Invalid.md'][2]?.errorDetail,
-    'Link "./Valid.md#not-existing-heading" is not valid'
+    'Link "./Valid.md#not-existing-heading" should have a valid fragment'
   )
 })

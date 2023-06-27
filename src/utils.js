@@ -41,8 +41,7 @@ const addError = (onError, lineNumber, detail, context, range, fixInfo) => {
  * Converts a Markdown heading into an HTML fragment according to the rules
  * used by GitHub.
  *
- * Taken from <https://github.com/DavidAnson/markdownlint/blob/d01180ec5a014083ee9d574b693a8d7fbc1e566d/lib/md051.js#L19>
- *
+ * @see https://github.com/DavidAnson/markdownlint/blob/d01180ec5a014083ee9d574b693a8d7fbc1e566d/lib/md051.js#L1
  * @param {string} inlineText Inline token for heading.
  * @returns {string} Fragment string for heading.
  */

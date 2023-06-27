@@ -43,10 +43,14 @@ const customRule = {
           const isRelative =
             url.protocol === 'file:' && !hrefSrc.startsWith('/')
           if (isRelative) {
-            const detail = `Link "${hrefSrc}" is not valid`
+            const detail = `Link "${hrefSrc}"`
 
             if (!fs.existsSync(url)) {
-              addError(onError, lineNumber, detail)
+              addError(
+                onError,
+                lineNumber,
+                `${detail} should exist in the file system`
+              )
               return
             }
 
@@ -68,7 +72,11 @@ const customRule = {
               })
 
               if (!headingsHTMLFragments.includes(url.hash)) {
-                addError(onError, lineNumber, detail)
+                addError(
+                  onError,
+                  lineNumber,
+                  `${detail} should have a valid fragment`
+                )
               }
             }
           }
