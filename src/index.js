@@ -16,26 +16,28 @@ const customRule = {
   tags: ['links'],
   function: (params, onError) => {
     filterTokens(params, 'inline', (token) => {
-      token.children.forEach((child) => {
+      for (const child of token.children) {
         const { lineNumber, type, attrs } = child
 
         /** @type {string | null} */
         let hrefSrc = null
 
         if (type === 'link_open') {
-          attrs.forEach((attr) => {
+          for (const attr of attrs) {
             if (attr[0] === 'href') {
               hrefSrc = attr[1]
+              break
             }
-          })
+          }
         }
 
         if (type === 'image') {
-          attrs.forEach((attr) => {
+          for (const attr of attrs) {
             if (attr[0] === 'src') {
               hrefSrc = attr[1]
+              break
             }
-          })
+          }
         }
 
         if (hrefSrc != null) {
@@ -51,7 +53,7 @@ const customRule = {
                 lineNumber,
                 `${detail} should exist in the file system`
               )
-              return
+              continue
             }
 
             if (type === 'link_open' && url.hash !== '') {
@@ -81,7 +83,7 @@ const customRule = {
             }
           }
         }
-      })
+      }
     })
   }
 }

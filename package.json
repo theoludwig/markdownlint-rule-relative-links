@@ -33,7 +33,7 @@
     "lint:commit": "commitlint",
     "lint:editorconfig": "editorconfig-checker",
     "lint:markdown": "markdownlint-cli2",
-    "lint:eslint": "eslint . --ignore-path .gitignore",
+    "lint:eslint": "eslint . --max-warnings 0 --report-unused-disable-directives --ignore-path .gitignore",
     "lint:prettier": "prettier . --check --ignore-path .gitignore",
     "lint:staged": "lint-staged",
     "test": "node --test ./test",
@@ -46,23 +46,23 @@
     "markdown-it": "13.0.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.6.5",
-    "@commitlint/config-conventional": "17.6.5",
-    "@types/node": "20.3.1",
-    "editorconfig-checker": "5.0.1",
-    "eslint": "8.43.0",
-    "eslint-config-conventions": "9.0.0",
+    "@commitlint/cli": "17.6.6",
+    "@commitlint/config-conventional": "17.6.6",
+    "@types/node": "20.4.2",
+    "editorconfig-checker": "5.1.1",
+    "eslint": "8.45.0",
+    "eslint-config-conventions": "11.0.1",
     "eslint-config-prettier": "8.8.0",
     "eslint-plugin-import": "2.27.5",
-    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-promise": "6.1.1",
-    "eslint-plugin-unicorn": "47.0.0",
+    "eslint-plugin-unicorn": "48.0.0",
     "husky": "8.0.3",
-    "lint-staged": "13.2.2",
+    "lint-staged": "13.2.3",
     "markdownlint": "0.29.0",
     "markdownlint-cli2": "0.8.1",
     "pinst": "3.0.0",
-    "prettier": "2.8.8",
-    "semantic-release": "21.0.5"
+    "prettier": "3.0.0",
+    "semantic-release": "21.0.7"
   }
 }

@@ -3,7 +3,7 @@ const MarkdownIt = require('markdown-it')
 /**
  * Calls the provided function for each matching token.
  *
- * @param {Object} params RuleParams instance.
+ * @param {object} params RuleParams instance.
  * @param {string} type Token type identifier.
  * @param {Function} handler Callback function.
  * @returns {void}
@@ -19,12 +19,12 @@ const filterTokens = (params, type, handler) => {
 /**
  * Adds a generic error object via the onError callback.
  *
- * @param {Object} onError RuleOnError instance.
+ * @param {object} onError RuleOnError instance.
  * @param {number} lineNumber Line number.
  * @param {string} [detail] Error details.
  * @param {string} [context] Error context.
  * @param {number[]} [range] Column and length of error.
- * @param {Object} [fixInfo] RuleOnErrorFixInfo instance.
+ * @param {object} [fixInfo] RuleOnErrorFixInfo instance.
  * @returns {void}
  */
 const addError = (onError, lineNumber, detail, context, range, fixInfo) => {
@@ -52,7 +52,6 @@ const convertHeadingToHTMLFragment = (inlineText) => {
       inlineText
         .toLowerCase()
         // RegExp source with Ruby's \p{Word} expanded into its General Categories
-        // eslint-disable-next-line max-len
         // https://github.com/gjtorikian/html-pipeline/blob/main/lib/html/pipeline/toc_filter.rb
         // https://ruby-doc.org/core-3.0.2/Regexp.html
         .replace(
