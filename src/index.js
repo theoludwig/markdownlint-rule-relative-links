@@ -1,39 +1,39 @@
-'use strict'
+"use strict"
 
-const { pathToFileURL } = require('node:url')
-const fs = require('node:fs')
+const { pathToFileURL } = require("node:url")
+const fs = require("node:fs")
 
 const {
   filterTokens,
   addError,
   convertHeadingToHTMLFragment,
-  getMarkdownHeadings
-} = require('./utils.js')
+  getMarkdownHeadings,
+} = require("./utils.js")
 
 const customRule = {
-  names: ['relative-links'],
-  description: 'Relative links should be valid',
-  tags: ['links'],
+  names: ["relative-links"],
+  description: "Relative links should be valid",
+  tags: ["links"],
   function: (params, onError) => {
-    filterTokens(params, 'inline', (token) => {
+    filterTokens(params, "inline", (token) => {
       for (const child of token.children) {
         const { lineNumber, type, attrs } = child
 
         /** @type {string | null} */
         let hrefSrc = null
 
-        if (type === 'link_open') {
+        if (type === "link_open") {
           for (const attr of attrs) {
-            if (attr[0] === 'href') {
+            if (attr[0] === "href") {
               hrefSrc = attr[1]
               break
             }
           }
         }
 
-        if (type === 'image') {
+        if (type === "image") {
           for (const attr of attrs) {
-            if (attr[0] === 'src') {
+            if (attr[0] === "src") {
               hrefSrc = attr[1]
               break
             }
@@ -43,7 +43,7 @@ const customRule = {
         if (hrefSrc != null) {
           const url = new URL(hrefSrc, pathToFileURL(params.name))
           const isRelative =
-            url.protocol === 'file:' && !hrefSrc.startsWith('/')
+            url.protocol === "file:" && !hrefSrc.startsWith("/")
           if (isRelative) {
             const detail = `Link "${hrefSrc}"`
 
@@ -51,13 +51,13 @@ const customRule = {
               addError(
                 onError,
                 lineNumber,
-                `${detail} should exist in the file system`
+                `${detail} should exist in the file system`,
               )
               continue
             }
 
-            if (type === 'link_open' && url.hash !== '') {
-              const fileContent = fs.readFileSync(url, { encoding: 'utf8' })
+            if (type === "link_open" && url.hash !== "") {
+              const fileContent = fs.readFileSync(url, { encoding: "utf8" })
               const headings = getMarkdownHeadings(fileContent)
 
               /** @type {Map<string, number>} */
@@ -77,7 +77,7 @@ const customRule = {
                 addError(
                   onError,
                   lineNumber,
-                  `${detail} should have a valid fragment`
+                  `${detail} should have a valid fragment`,
                 )
               }
             }
@@ -85,7 +85,7 @@ const customRule = {
         }
       }
     })
-  }
+  },
 }
 
 module.exports = customRule

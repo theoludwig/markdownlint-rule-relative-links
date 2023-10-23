@@ -1,4 +1,4 @@
-const MarkdownIt = require('markdown-it')
+const MarkdownIt = require("markdown-it")
 
 /**
  * Calls the provided function for each matching token.
@@ -33,7 +33,7 @@ const addError = (onError, lineNumber, detail, context, range, fixInfo) => {
     detail,
     context,
     range,
-    fixInfo
+    fixInfo,
   })
 }
 
@@ -47,7 +47,7 @@ const addError = (onError, lineNumber, detail, context, range, fixInfo) => {
  */
 const convertHeadingToHTMLFragment = (inlineText) => {
   return (
-    '#' +
+    "#" +
     encodeURIComponent(
       inlineText
         .toLowerCase()
@@ -56,15 +56,15 @@ const convertHeadingToHTMLFragment = (inlineText) => {
         // https://ruby-doc.org/core-3.0.2/Regexp.html
         .replace(
           /[^\p{Letter}\p{Mark}\p{Number}\p{Connector_Punctuation}\- ]/gu,
-          ''
+          "",
         )
-        .replace(/ /gu, '-')
+        .replace(/ /gu, "-"),
     )
   )
 }
 
-const headingTags = new Set(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
-const ignoredTokens = new Set(['heading_open', 'heading_close'])
+const headingTags = new Set(["h1", "h2", "h3", "h4", "h5", "h6"])
+const ignoredTokens = new Set(["heading_open", "heading_close"])
 
 /**
  * Gets the headings from a Markdown string.
@@ -83,9 +83,9 @@ const getMarkdownHeadings = (content) => {
 
   for (const token of tokens) {
     if (headingTags.has(token.tag)) {
-      if (token.type === 'heading_open') {
+      if (token.type === "heading_open") {
         headingToken = token.markup
-      } else if (token.type === 'heading_close') {
+      } else if (token.type === "heading_close") {
         headingToken = null
       }
     }
@@ -103,7 +103,7 @@ const getMarkdownHeadings = (content) => {
         .map((token) => {
           return token.content
         })
-        .join('')}`
+        .join("")}`,
     )
   }
 
@@ -114,5 +114,5 @@ module.exports = {
   filterTokens,
   addError,
   convertHeadingToHTMLFragment,
-  getMarkdownHeadings
+  getMarkdownHeadings,
 }
