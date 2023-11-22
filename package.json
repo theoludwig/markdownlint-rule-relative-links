@@ -43,26 +43,26 @@
     "postpublish": "pinst --enable"
   },
   "dependencies": {
-    "markdown-it": "13.0.1"
+    "markdown-it": "13.0.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.6.6",
-    "@commitlint/config-conventional": "17.6.6",
-    "@types/node": "20.4.2",
-    "editorconfig-checker": "5.1.1",
-    "eslint": "8.45.0",
-    "eslint-config-conventions": "11.0.1",
-    "eslint-config-prettier": "8.8.0",
-    "eslint-plugin-import": "2.27.5",
-    "eslint-plugin-prettier": "5.0.0",
+    "@commitlint/cli": "18.4.3",
+    "@commitlint/config-conventional": "18.4.3",
+    "@types/node": "20.9.4",
+    "editorconfig-checker": "5.1.2",
+    "eslint": "8.54.0",
+    "eslint-config-conventions": "13.0.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-import": "2.29.0",
+    "eslint-plugin-prettier": "5.0.1",
     "eslint-plugin-promise": "6.1.1",
-    "eslint-plugin-unicorn": "48.0.0",
+    "eslint-plugin-unicorn": "49.0.0",
     "husky": "8.0.3",
-    "lint-staged": "13.2.3",
-    "markdownlint": "0.29.0",
-    "markdownlint-cli2": "0.8.1",
+    "lint-staged": "15.1.0",
+    "markdownlint": "0.32.1",
+    "markdownlint-cli2": "0.11.0",
     "pinst": "3.0.0",
-    "prettier": "3.0.0",
-    "semantic-release": "21.0.7"
+    "prettier": "3.1.0",
+    "semantic-release": "22.0.8"
   }
 }
