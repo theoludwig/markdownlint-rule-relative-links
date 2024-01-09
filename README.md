@@ -43,7 +43,7 @@ With `awesome.md` content:
 Running [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) with `markdownlint-rule-relative-links` will output:
 
 ```sh
-awesome.md:3 relative-links Relative links should be valid [Link "./invalid.txt" should exist in the file system]
+awesome.md:3 relative-links Relative links should be valid ["./invalid.txt" should exist in the file system]
 ```
 
 ### Additional features

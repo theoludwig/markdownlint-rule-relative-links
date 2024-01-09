@@ -1,11 +1,14 @@
 const MarkdownIt = require("markdown-it")
 
+/** @typedef {import('markdownlint').RuleParams} MarkdownLintRuleParams */
+/** @typedef {import('markdownlint').MarkdownItToken} MarkdownItToken */
+
 /**
  * Calls the provided function for each matching token.
  *
- * @param {object} params RuleParams instance.
+ * @param {MarkdownLintRuleParams} params RuleParams instance.
  * @param {string} type Token type identifier.
- * @param {Function} handler Callback function.
+ * @param {(token: MarkdownItToken) => void} handler Callback function.
  * @returns {void}
  */
 const filterTokens = (params, type, handler) => {
@@ -14,27 +17,6 @@ const filterTokens = (params, type, handler) => {
       handler(token)
     }
   }
-}
-
-/**
- * Adds a generic error object via the onError callback.
- *
- * @param {object} onError RuleOnError instance.
- * @param {number} lineNumber Line number.
- * @param {string} [detail] Error details.
- * @param {string} [context] Error context.
- * @param {number[]} [range] Column and length of error.
- * @param {object} [fixInfo] RuleOnErrorFixInfo instance.
- * @returns {void}
- */
-const addError = (onError, lineNumber, detail, context, range, fixInfo) => {
-  onError({
-    lineNumber,
-    detail,
-    context,
-    range,
-    fixInfo,
-  })
 }
 
 /**
@@ -98,8 +80,10 @@ const getMarkdownHeadings = (content) => {
       continue
     }
 
+    const children = token.children ?? []
+
     headings.push(
-      `${token.children
+      `${children
         .map((token) => {
           return token.content
         })
@@ -112,7 +96,6 @@ const getMarkdownHeadings = (content) => {
 
 module.exports = {
   filterTokens,
-  addError,
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
 }

@@ -5,22 +5,27 @@ const fs = require("node:fs")
 
 const {
   filterTokens,
-  addError,
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
 } = require("./utils.js")
 
+/** @typedef {import('markdownlint').Rule} MarkdownLintRule */
+
+/**
+ * @type {MarkdownLintRule}
+ */
 const customRule = {
   names: ["relative-links"],
   description: "Relative links should be valid",
   tags: ["links"],
   function: (params, onError) => {
     filterTokens(params, "inline", (token) => {
-      for (const child of token.children) {
-        const { lineNumber, type, attrs } = child
+      const children = token.children ?? []
+      for (const child of children) {
+        const { type, attrs, lineNumber } = child
 
-        /** @type {string | null} */
-        let hrefSrc = null
+        /** @type {string | undefined} */
+        let hrefSrc
 
         if (type === "link_open") {
           for (const attr of attrs) {
@@ -45,14 +50,13 @@ const customRule = {
           const isRelative =
             url.protocol === "file:" && !hrefSrc.startsWith("/")
           if (isRelative) {
-            const detail = `Link "${hrefSrc}"`
+            const detail = `"${hrefSrc}"`
 
             if (!fs.existsSync(url)) {
-              addError(
-                onError,
+              onError({
                 lineNumber,
-                `${detail} should exist in the file system`,
-              )
+                detail: `${detail} should exist in the file system`,
+              })
               continue
             }
 
@@ -74,11 +78,10 @@ const customRule = {
               })
 
               if (!headingsHTMLFragments.includes(url.hash)) {
-                addError(
-                  onError,
+                onError({
                   lineNumber,
-                  `${detail} should have a valid fragment`,
-                )
+                  detail: `${detail} should have a valid fragment identifier`,
+                })
               }
             }
           }
