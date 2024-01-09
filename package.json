@@ -37,7 +37,7 @@
     "lint:prettier": "prettier . --check --ignore-path .gitignore",
     "lint:javascript": "tsc --project jsconfig.json --noEmit",
     "lint:staged": "lint-staged",
-    "test": "node --test ./test",
+    "test": "node --test --experimental-test-coverage ./test",
     "release": "semantic-release",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",

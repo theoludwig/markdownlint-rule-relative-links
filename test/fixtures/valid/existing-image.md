@@ -1,0 +1,3 @@
+# Valid
+
+![Image](./image.png)
