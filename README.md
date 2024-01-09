@@ -46,6 +46,19 @@ Running [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) wit
 awesome.md:3 relative-links Relative links should be valid [Link "./invalid.txt" should exist in the file system]
 ```
 
+### Additional features
+
+- Support images (e.g: `![Image](./image.png)`).
+- Support anchors (heading fragment links) (e.g: `[Link](./awesome.md#existing-heading)`).
+- Ignore external links and absolute paths as it only checks relative links (e.g: `https://example.com/` or `/absolute/path.png`).
+
+### Limitations
+
+- Only images and links defined using markdown syntax are supported, html syntax is not supported (e.g: `<a href="./link.txt" />` or `<img src="./image.png" />`).
+- Anchors checking is limited to headings, other elements are not supported (e.g: with a "id", `<div id="anchor" />`).
+
+Contributions are welcome to improve the rule, and to alleviate these limitations. See [CONTRIBUTING.md](./CONTRIBUTING.md) for more information.
+
 ### Related links
 
 - [DavidAnson/markdownlint#253](https://github.com/DavidAnson/markdownlint/issues/253)
