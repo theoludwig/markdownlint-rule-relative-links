@@ -10,7 +10,7 @@
   <a href="./CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg" alt="Contributor Covenant" /></a>
   <br />
   <a href="https://github.com/theoludwig/markdownlint-rule-relative-links/actions/workflows/lint.yml"><img src="https://github.com/theoludwig/markdownlint-rule-relative-links/actions/workflows/lint.yml/badge.svg?branch=develop" alt="Lint" /></a>
-  <a href="https://github.com/theoludwig/markdownlint-rule-relative-linksactions/workflows/test.yml"><img src="https://github.com/theoludwig/markdownlint-rule-relative-links/actions/workflows/test.yml/badge.svg?branch=develop" alt="Test" /></a>
+  <a href="https://github.com/theoludwig/markdownlint-rule-relative-links/actions/workflows/test.yml"><img src="https://github.com/theoludwig/markdownlint-rule-relative-links/actions/workflows/test.yml/badge.svg?branch=develop" alt="Test" /></a>
   <br />
   <a href="https://conventionalcommits.org"><img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg" alt="Conventional Commits" /></a>
   <a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release" /></a>
@@ -54,7 +54,7 @@ awesome.md:3 relative-links Relative links should be valid ["./invalid.txt" shou
 
 ### Limitations
 
-- Only images and links defined using markdown syntax are supported, html syntax is not supported (e.g: `<a href="./link.txt" />` or `<img src="./image.png" />`).
+- Only images and links defined using markdown syntax are validated, html syntax is not supported (e.g: `<a href="./link.txt" />` or `<img src="./image.png" />`).
 - Anchors checking is limited to headings, other elements are not supported (e.g: with a "id", `<div id="anchor" />`).
 
 Contributions are welcome to improve the rule, and to alleviate these limitations. See [CONTRIBUTING.md](./CONTRIBUTING.md) for more information.
