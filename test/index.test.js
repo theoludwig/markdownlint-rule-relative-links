@@ -65,15 +65,21 @@ test("ensure the rule validates correctly", async (t) => {
       const lintResults = await validateMarkdownLint(
         "test/fixtures/invalid/non-existing-heading-fragment/non-existing-heading-fragment.md",
       )
-      assert.equal(lintResults?.length, 1)
-      assert.deepEqual(lintResults?.[0]?.ruleNames, relativeLinksRule.names)
-      assert.equal(
-        lintResults?.[0]?.ruleDescription,
-        relativeLinksRule.description,
-      )
+      assert.equal(lintResults?.length, 2)
+      for (let i = 0; i < 2; i++) {
+        assert.deepEqual(lintResults?.[i]?.ruleNames, relativeLinksRule.names)
+        assert.equal(
+          lintResults?.[i]?.ruleDescription,
+          relativeLinksRule.description,
+        )
+      }
       assert.equal(
         lintResults?.[0]?.errorDetail,
         '"./awesome.md#non-existing-heading" should have a valid fragment identifier',
+      )
+      assert.equal(
+        lintResults?.[1]?.errorDetail,
+        '"./awesome.md#non-existing-heading-anchor" should have a valid fragment identifier',
       )
     })
 

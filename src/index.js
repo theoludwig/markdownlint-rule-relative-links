@@ -7,6 +7,7 @@ const {
   filterTokens,
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
+  getMarkdownAnchorHTMLFragments,
 } = require("./utils.js")
 
 /** @typedef {import('markdownlint').Rule} MarkdownLintRule */
@@ -63,6 +64,8 @@ const customRule = {
             if (type === "link_open" && url.hash !== "") {
               const fileContent = fs.readFileSync(url, { encoding: "utf8" })
               const headings = getMarkdownHeadings(fileContent)
+              const anchorHTMLFragments =
+                getMarkdownAnchorHTMLFragments(fileContent)
 
               /** @type {Map<string, number>} */
               const fragments = new Map()
@@ -76,6 +79,8 @@ const customRule = {
                 }
                 return fragment
               })
+
+              headingsHTMLFragments.push(...anchorHTMLFragments)
 
               if (!headingsHTMLFragments.includes(url.hash)) {
                 onError({

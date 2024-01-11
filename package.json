@@ -37,14 +37,15 @@
     "lint:prettier": "prettier . --check --ignore-path .gitignore",
     "lint:javascript": "tsc --project jsconfig.json --noEmit",
     "lint:staged": "lint-staged",
-    "test": "node --test --experimental-test-coverage ./test",
+    "test": "node --test --experimental-test-coverage",
     "release": "semantic-release",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
   },
   "dependencies": {
-    "markdown-it": "14.0.0"
+    "markdown-it": "14.0.0",
+    "markdownlint-rule-helpers": "0.24.0"
   },
   "devDependencies": {
     "@commitlint/cli": "18.4.4",
@@ -63,6 +64,7 @@
     "lint-staged": "15.2.0",
     "markdownlint": "0.33.0",
     "markdownlint-cli2": "0.11.0",
+    "markdownlint-rule-helpers": "0.24.0",
     "pinst": "3.0.0",
     "prettier": "3.1.1",
     "semantic-release": "22.0.12",

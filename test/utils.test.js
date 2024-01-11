@@ -4,6 +4,7 @@ const assert = require("node:assert/strict")
 const {
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
+  getMarkdownAnchorHTMLFragments,
 } = require("../src/utils.js")
 
 test("utils", async (t) => {
@@ -33,5 +34,18 @@ test("utils", async (t) => {
       getMarkdownHeadings("# Hello\n\n## World\n\n## Hello, world!\n"),
       ["Hello", "World", "Hello, world!"],
     )
+  })
+
+  await t.test("getMarkdownAnchorHTMLFragments", async () => {
+    assert.deepStrictEqual(
+      getMarkdownAnchorHTMLFragments('<a name="anchorName" id="anchorId"></a>'),
+      ["#anchorId"],
+    )
+    assert.deepStrictEqual(
+      getMarkdownAnchorHTMLFragments('<a name="anchorName"></a>'),
+      ["#anchorName"],
+    )
+    assert.deepStrictEqual(getMarkdownAnchorHTMLFragments("<a></a>"), [])
+    assert.deepStrictEqual(getMarkdownAnchorHTMLFragments("<a>"), [])
   })
 })
