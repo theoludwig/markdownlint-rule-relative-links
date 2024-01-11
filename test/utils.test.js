@@ -38,14 +38,16 @@ test("utils", async (t) => {
 
   await t.test("getMarkdownAnchorHTMLFragments", async () => {
     assert.deepStrictEqual(
-      getMarkdownAnchorHTMLFragments('<a name="anchorName" id="anchorId"></a>'),
+      getMarkdownAnchorHTMLFragments(
+        '<a name="anchorName" id="anchorId">Link</a>',
+      ),
       ["#anchorId"],
     )
     assert.deepStrictEqual(
-      getMarkdownAnchorHTMLFragments('<a name="anchorName"></a>'),
+      getMarkdownAnchorHTMLFragments('<a name="anchorName">Link</a>'),
       ["#anchorName"],
     )
-    assert.deepStrictEqual(getMarkdownAnchorHTMLFragments("<a></a>"), [])
+    assert.deepStrictEqual(getMarkdownAnchorHTMLFragments("<a>Link</a>"), [])
     assert.deepStrictEqual(getMarkdownAnchorHTMLFragments("<a>"), [])
   })
 })

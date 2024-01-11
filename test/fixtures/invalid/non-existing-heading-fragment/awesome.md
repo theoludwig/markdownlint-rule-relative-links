@@ -1,5 +1,3 @@
-# Valid
-
-<a name="existing-heading-anchor" ></a>
+# Awesome
 
 ## Existing Heading
