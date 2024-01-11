@@ -7,7 +7,7 @@ const {
   filterTokens,
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
-  getMarkdownAnchorHTMLFragments,
+  getMarkdownIdOrAnchorNameFragments,
 } = require("./utils.js")
 
 /** @typedef {import('markdownlint').Rule} MarkdownLintRule */
@@ -46,65 +46,83 @@ const customRule = {
           }
         }
 
-        if (hrefSrc != null) {
-          const url = new URL(hrefSrc, pathToFileURL(params.name))
-          const isRelative =
-            url.protocol === "file:" &&
-            !hrefSrc.startsWith("/") &&
-            !hrefSrc.startsWith("#")
-          if (isRelative) {
-            const detail = `"${hrefSrc}"`
+        if (hrefSrc == null) {
+          continue
+        }
 
-            if (!fs.existsSync(url)) {
+        const url = new URL(hrefSrc, pathToFileURL(params.name))
+        const isRelative =
+          url.protocol === "file:" &&
+          !hrefSrc.startsWith("/") &&
+          !hrefSrc.startsWith("#")
+
+        if (!isRelative) {
+          continue
+        }
+
+        const detail = `"${hrefSrc}"`
+
+        if (!fs.existsSync(url)) {
+          onError({
+            lineNumber,
+            detail: `${detail} should exist in the file system`,
+          })
+          continue
+        }
+
+        if (url.hash.length <= 0) {
+          if (hrefSrc.includes("#")) {
+            if (type !== "link_open") {
               onError({
                 lineNumber,
-                detail: `${detail} should exist in the file system`,
+                detail: `${detail} should not have a fragment identifier as it is an image`,
               })
               continue
             }
 
-            if (type !== "link_open") {
-              continue
-            }
-
-            if (url.hash.length <= 0) {
-              if (hrefSrc.includes("#")) {
-                onError({
-                  lineNumber,
-                  detail: `${detail} should have a valid fragment identifier`,
-                })
-              }
-            }
-
-            if (url.hash.length > 0) {
-              const fileContent = fs.readFileSync(url, { encoding: "utf8" })
-              const headings = getMarkdownHeadings(fileContent)
-              const anchorHTMLFragments =
-                getMarkdownAnchorHTMLFragments(fileContent)
-
-              /** @type {Map<string, number>} */
-              const fragments = new Map()
-
-              const headingsHTMLFragments = headings.map((heading) => {
-                const fragment = convertHeadingToHTMLFragment(heading)
-                const count = fragments.get(fragment) ?? 0
-                fragments.set(fragment, count + 1)
-                if (count !== 0) {
-                  return `${fragment}-${count}`
-                }
-                return fragment
-              })
-
-              headingsHTMLFragments.push(...anchorHTMLFragments)
-
-              if (!headingsHTMLFragments.includes(url.hash)) {
-                onError({
-                  lineNumber,
-                  detail: `${detail} should have a valid fragment identifier`,
-                })
-              }
-            }
+            onError({
+              lineNumber,
+              detail: `${detail} should have a valid fragment identifier`,
+            })
+            continue
           }
+          continue
+        }
+
+        if (type !== "link_open") {
+          onError({
+            lineNumber,
+            detail: `${detail} should not have a fragment identifier as it is an image`,
+          })
+          continue
+        }
+
+        const fileContent = fs.readFileSync(url, { encoding: "utf8" })
+        const headings = getMarkdownHeadings(fileContent)
+        const idOrAnchorNameHTMLFragments =
+          getMarkdownIdOrAnchorNameFragments(fileContent)
+
+        /** @type {Map<string, number>} */
+        const fragments = new Map()
+
+        const fragmentsHTML = headings.map((heading) => {
+          const fragment = convertHeadingToHTMLFragment(heading)
+          const count = fragments.get(fragment) ?? 0
+          fragments.set(fragment, count + 1)
+          if (count !== 0) {
+            return `${fragment}-${count}`
+          }
+          return fragment
+        })
+
+        fragmentsHTML.push(...idOrAnchorNameHTMLFragments)
+
+        if (!fragmentsHTML.includes(url.hash)) {
+          onError({
+            lineNumber,
+            detail: `${detail} should have a valid fragment identifier`,
+          })
+          continue
         }
       }
     })

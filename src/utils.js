@@ -119,7 +119,7 @@ const getMarkdownIdOrAnchorNameFragments = (content) => {
     }
 
     const anchorIdOrName = anchorMatch[1]
-    if (anchorIdOrName === undefined) {
+    if (anchorIdOrName.length <= 0) {
       continue
     }
 
@@ -136,5 +136,5 @@ module.exports = {
   filterTokens,
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
-  getMarkdownAnchorHTMLFragments: getMarkdownIdOrAnchorNameFragments,
+  getMarkdownIdOrAnchorNameFragments,
 }
