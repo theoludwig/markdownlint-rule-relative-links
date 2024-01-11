@@ -49,7 +49,9 @@ const customRule = {
         if (hrefSrc != null) {
           const url = new URL(hrefSrc, pathToFileURL(params.name))
           const isRelative =
-            url.protocol === "file:" && !hrefSrc.startsWith("/")
+            url.protocol === "file:" &&
+            !hrefSrc.startsWith("/") &&
+            !hrefSrc.startsWith("#")
           if (isRelative) {
             const detail = `"${hrefSrc}"`
 
