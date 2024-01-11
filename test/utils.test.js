@@ -4,7 +4,7 @@ const assert = require("node:assert/strict")
 const {
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
-  getMarkdownAnchorHTMLFragments,
+  getMarkdownIdOrAnchorNameFragments,
 } = require("../src/utils.js")
 
 test("utils", async (t) => {
@@ -36,18 +36,22 @@ test("utils", async (t) => {
     )
   })
 
-  await t.test("getMarkdownAnchorHTMLFragments", async () => {
+  await t.test("getMarkdownIdOrAnchorNameFragments", async () => {
     assert.deepStrictEqual(
-      getMarkdownAnchorHTMLFragments(
+      getMarkdownIdOrAnchorNameFragments(
         '<a name="anchorName" id="anchorId">Link</a>',
       ),
       ["#anchorId"],
     )
     assert.deepStrictEqual(
-      getMarkdownAnchorHTMLFragments('<a name="anchorName">Link</a>'),
+      getMarkdownIdOrAnchorNameFragments('<a name="anchorName">Link</a>'),
       ["#anchorName"],
     )
-    assert.deepStrictEqual(getMarkdownAnchorHTMLFragments("<a>Link</a>"), [])
-    assert.deepStrictEqual(getMarkdownAnchorHTMLFragments("<a>"), [])
+    assert.deepStrictEqual(
+      getMarkdownIdOrAnchorNameFragments("<a>Link</a>"),
+      [],
+    )
+    assert.deepStrictEqual(getMarkdownIdOrAnchorNameFragments("<a>"), [])
+    assert.deepStrictEqual(getMarkdownIdOrAnchorNameFragments("<a id=>"), [])
   })
 })
