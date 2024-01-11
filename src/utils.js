@@ -119,7 +119,7 @@ const getMarkdownIdOrAnchorNameFragments = (content) => {
     }
 
     const anchorIdOrName = anchorMatch[1]
-    if (anchorMatch[1] === undefined) {
+    if (anchorIdOrName === undefined) {
       continue
     }
 

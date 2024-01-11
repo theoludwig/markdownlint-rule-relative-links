@@ -63,7 +63,20 @@ const customRule = {
               continue
             }
 
-            if (type === "link_open" && url.hash !== "") {
+            if (type !== "link_open") {
+              continue
+            }
+
+            if (url.hash.length <= 0) {
+              if (hrefSrc.includes("#")) {
+                onError({
+                  lineNumber,
+                  detail: `${detail} should have a valid fragment identifier`,
+                })
+              }
+            }
+
+            if (url.hash.length > 0) {
               const fileContent = fs.readFileSync(url, { encoding: "utf8" })
               const headings = getMarkdownHeadings(fileContent)
               const anchorHTMLFragments =
