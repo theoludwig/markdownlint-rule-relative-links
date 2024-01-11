@@ -100,11 +100,11 @@ const anchorNameRe = getHtmlAttributeRe("name")
 const anchorIdRe = getHtmlAttributeRe("id")
 
 /**
- * Gets the anchor HTML fragments from a Markdown string.
+ * Gets the id or anchor name fragments from a Markdown string.
  * @param {string} content
  * @returns {string[]}
  */
-const getMarkdownAnchorHTMLFragments = (content) => {
+const getMarkdownIdOrAnchorNameFragments = (content) => {
   const markdownIt = new MarkdownIt({ html: true })
   const tokens = markdownIt.parse(content, {})
 
@@ -112,30 +112,20 @@ const getMarkdownAnchorHTMLFragments = (content) => {
   const result = []
 
   for (const token of tokens) {
-    if (token.type === "inline") {
-      if (!token.children) {
-        continue
-      }
+    const anchorMatch =
+      anchorIdRe.exec(token.content) || anchorNameRe.exec(token.content)
+    if (!anchorMatch || anchorMatch.length === 0) {
+      continue
+    }
 
-      for (const child of token.children) {
-        if (child.type === "html_inline") {
-          const anchorMatch =
-            anchorIdRe.exec(token.content) || anchorNameRe.exec(token.content)
-          if (!anchorMatch || anchorMatch.length === 0) {
-            continue
-          }
+    const anchorIdOrName = anchorMatch[1]
+    if (anchorMatch[1] === undefined) {
+      continue
+    }
 
-          const anchorIdOrName = anchorMatch[1]
-          if (anchorMatch[1] === undefined) {
-            continue
-          }
-
-          const anchorHTMLFragment = "#" + anchorIdOrName
-          if (!result.includes(anchorHTMLFragment)) {
-            result.push(anchorHTMLFragment)
-          }
-        }
-      }
+    const anchorHTMLFragment = "#" + anchorIdOrName
+    if (!result.includes(anchorHTMLFragment)) {
+      result.push(anchorHTMLFragment)
     }
   }
 
@@ -146,5 +136,5 @@ module.exports = {
   filterTokens,
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
-  getMarkdownAnchorHTMLFragments,
+  getMarkdownAnchorHTMLFragments: getMarkdownIdOrAnchorNameFragments,
 }
