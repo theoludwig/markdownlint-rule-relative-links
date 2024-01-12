@@ -1,25 +1,6 @@
 const MarkdownIt = require("markdown-it")
-// @ts-ignore
-const { getHtmlAttributeRe } = require("markdownlint-rule-helpers")
 
-/** @typedef {import('markdownlint').RuleParams} MarkdownLintRuleParams */
-/** @typedef {import('markdownlint').MarkdownItToken} MarkdownItToken */
-
-/**
- * Calls the provided function for each matching token.
- *
- * @param {MarkdownLintRuleParams} params RuleParams instance.
- * @param {string} type Token type identifier.
- * @param {(token: MarkdownItToken) => void} handler Callback function.
- * @returns {void}
- */
-const filterTokens = (params, type, handler) => {
-  for (const token of params.tokens) {
-    if (token.type === type) {
-      handler(token)
-    }
-  }
-}
+const { getHtmlAttributeRe } = require("./markdownlint-rule-helpers/helpers.js")
 
 /**
  * Converts a Markdown heading into an HTML fragment according to the rules
@@ -114,12 +95,12 @@ const getMarkdownIdOrAnchorNameFragments = (content) => {
   for (const token of tokens) {
     const anchorMatch =
       anchorIdRe.exec(token.content) || anchorNameRe.exec(token.content)
-    if (!anchorMatch || anchorMatch.length === 0) {
+    if (anchorMatch == null) {
       continue
     }
 
     const anchorIdOrName = anchorMatch[1]
-    if (anchorIdOrName.length <= 0) {
+    if (anchorIdOrName == null || anchorIdOrName.length <= 0) {
       continue
     }
 
@@ -133,7 +114,6 @@ const getMarkdownIdOrAnchorNameFragments = (content) => {
 }
 
 module.exports = {
-  filterTokens,
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
   getMarkdownIdOrAnchorNameFragments,
