@@ -3,8 +3,8 @@
 const { pathToFileURL } = require("node:url")
 const fs = require("node:fs")
 
+const { filterTokens } = require("./markdownlint-rule-helpers/helpers.js")
 const {
-  filterTokens,
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
   getMarkdownIdOrAnchorNameFragments,

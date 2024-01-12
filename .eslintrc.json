@@ -1,7 +1,11 @@
 {
   "extends": ["conventions", "prettier"],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "import", "unicorn"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "import/extensions": ["error", "always"]
   }
 }

@@ -9,6 +9,7 @@
     "noEmit": true,
     "rootDir": ".",
     "baseUrl": ".",
+    "skipLibCheck": true,
     "strict": true,
     "allowUnusedLabels": false,
     "allowUnreachableCode": false,
@@ -19,8 +20,6 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "forceConsistentCasingInFileNames": true,
-    "maxNodeModuleJsDepth": 0
-  },
-  "exclude": ["node_modules"]
+    "forceConsistentCasingInFileNames": true
+  }
 }
