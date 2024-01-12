@@ -77,8 +77,8 @@ const getMarkdownHeadings = (content) => {
   return headings
 }
 
-const anchorNameRe = getHtmlAttributeRe("name")
-const anchorIdRe = getHtmlAttributeRe("id")
+const nameHTMLAttributeRegex = getHtmlAttributeRe("name")
+const idHTMLAttributeRegex = getHtmlAttributeRe("id")
 
 /**
  * Gets the id or anchor name fragments from a Markdown string.
@@ -93,20 +93,21 @@ const getMarkdownIdOrAnchorNameFragments = (content) => {
   const result = []
 
   for (const token of tokens) {
-    const anchorMatch =
-      anchorIdRe.exec(token.content) || anchorNameRe.exec(token.content)
-    if (anchorMatch == null) {
+    const regexMatch =
+      idHTMLAttributeRegex.exec(token.content) ||
+      nameHTMLAttributeRegex.exec(token.content)
+    if (regexMatch == null) {
       continue
     }
 
-    const anchorIdOrName = anchorMatch[1]
-    if (anchorIdOrName == null || anchorIdOrName.length <= 0) {
+    const idOrName = regexMatch[1]
+    if (idOrName == null || idOrName.length <= 0) {
       continue
     }
 
-    const anchorHTMLFragment = "#" + anchorIdOrName
-    if (!result.includes(anchorHTMLFragment)) {
-      result.push(anchorHTMLFragment)
+    const htmlFragment = "#" + idOrName
+    if (!result.includes(htmlFragment)) {
+      result.push(htmlFragment)
     }
   }
 

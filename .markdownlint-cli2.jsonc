@@ -1,9 +1,9 @@
 {
   "config": {
     "extends": "markdownlint/style/prettier",
-    "relative-links": true,
     "default": true,
-    "MD033": false
+    "relative-links": true,
+    "no-inline-html": false
   },
   "globs": ["**/*.{md,mdx}"],
   "ignores": ["**/node_modules", "**/test/fixtures/**"],
