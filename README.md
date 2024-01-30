@@ -66,7 +66,7 @@ Contributions are welcome to improve the rule, and to alleviate these limitation
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) >= 16.0.0
+[Node.js](https://nodejs.org/) >= 16.0.0
 
 ## Installation
 
@@ -88,7 +88,7 @@ We recommend configuring [markdownlint-cli2](https://github.com/DavidAnson/markd
     "default": true,
     "relative-links": true
   },
-  "globs": ["**/*.{md,mdx}"],
+  "globs": ["**/*.md"],
   "ignores": ["**/node_modules"],
   "customRules": ["markdownlint-rule-relative-links"]
 }

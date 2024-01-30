@@ -2,6 +2,8 @@ const MarkdownIt = require("markdown-it")
 
 const { getHtmlAttributeRe } = require("./markdownlint-rule-helpers/helpers.js")
 
+const markdownIt = new MarkdownIt({ html: true })
+
 /**
  * Converts a Markdown heading into an HTML fragment according to the rules
  * used by GitHub.
@@ -37,7 +39,6 @@ const ignoredTokens = new Set(["heading_open", "heading_close"])
  * @returns {string[]}
  */
 const getMarkdownHeadings = (content) => {
-  const markdownIt = new MarkdownIt({ html: true })
   const tokens = markdownIt.parse(content, {})
 
   /** @type {string[]} */
@@ -86,7 +87,6 @@ const idHTMLAttributeRegex = getHtmlAttributeRe("id")
  * @returns {string[]}
  */
 const getMarkdownIdOrAnchorNameFragments = (content) => {
-  const markdownIt = new MarkdownIt({ html: true })
   const tokens = markdownIt.parse(content, {})
 
   /** @type {string[]} */

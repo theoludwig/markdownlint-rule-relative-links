@@ -72,7 +72,7 @@ const customRule = {
 
         if (url.hash.length <= 0) {
           if (hrefSrc.includes("#")) {
-            if (type !== "link_open") {
+            if (type === "image") {
               onError({
                 lineNumber,
                 detail: `${detail} should not have a fragment identifier as it is an image`,
@@ -89,7 +89,7 @@ const customRule = {
           continue
         }
 
-        if (type !== "link_open") {
+        if (type === "image") {
           onError({
             lineNumber,
             detail: `${detail} should not have a fragment identifier as it is an image`,
