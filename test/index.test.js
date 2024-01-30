@@ -124,6 +124,11 @@ test("ensure the rule validates correctly", async (t) => {
           "test/fixtures/valid/existing-heading-fragment/existing-heading-fragment.md",
       },
       {
+        name: "should only parse markdown files for fragments checking",
+        fixturePath:
+          "test/fixtures/valid/only-parse-markdown-files-for-fragments/only-parse-markdown-files-for-fragments.md",
+      },
+      {
         name: "with an existing file",
         fixturePath: "test/fixtures/valid/existing-file.md",
       },

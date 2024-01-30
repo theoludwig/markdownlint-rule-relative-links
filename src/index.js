@@ -97,6 +97,10 @@ const customRule = {
           continue
         }
 
+        if (!url.pathname.endsWith(".md")) {
+          continue
+        }
+
         const fileContent = fs.readFileSync(url, { encoding: "utf8" })
         const headings = getMarkdownHeadings(fileContent)
         const idOrAnchorNameHTMLFragments =
