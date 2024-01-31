@@ -5,6 +5,9 @@ const {
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
   getMarkdownIdOrAnchorNameFragments,
+  isValidIntegerString,
+  getNumberOfLines,
+  getLineNumberStringFromFragment,
 } = require("../src/utils.js")
 
 test("utils", async (t) => {
@@ -53,5 +56,24 @@ test("utils", async (t) => {
     )
     assert.deepStrictEqual(getMarkdownIdOrAnchorNameFragments("<a>"), [])
     assert.deepStrictEqual(getMarkdownIdOrAnchorNameFragments("<a id=>"), [])
+  })
+
+  await t.test("isValidIntegerString", async () => {
+    assert.strictEqual(isValidIntegerString("1"), true)
+    assert.strictEqual(isValidIntegerString("45"), true)
+    assert.strictEqual(isValidIntegerString("1abc"), false)
+    assert.strictEqual(isValidIntegerString("1.0"), false)
+  })
+
+  await t.test("getNumberOfLines", async () => {
+    assert.strictEqual(getNumberOfLines(""), 1)
+    assert.strictEqual(getNumberOfLines("Hello"), 1)
+    assert.strictEqual(getNumberOfLines("Hello\nWorld"), 2)
+    assert.strictEqual(getNumberOfLines("Hello\nWorld\n"), 3)
+    assert.strictEqual(getNumberOfLines("Hello\nWorld\n\n"), 4)
+  })
+
+  await t.test("getLineNumberStringFromFragment", async () => {
+    assert.strictEqual(getLineNumberStringFromFragment("#L50"), "50")
   })
 })

@@ -114,8 +114,47 @@ const getMarkdownIdOrAnchorNameFragments = (content) => {
   return result
 }
 
+/**
+ * Checks if a string is a valid integer.
+ *
+ * Using `Number.parseInt` combined with `Number.isNaN` will not be sufficient enough because `Number.parseInt("1abc", 10)` will return `1` (a valid number) instead of `NaN`.
+ *
+ * @param {string} value
+ * @returns {boolean}
+ * @example isValidIntegerString("1") // true
+ * @example isValidIntegerString("45") // true
+ * @example isValidIntegerString("1abc") // false
+ * @example isValidIntegerString("1.0") // false
+ */
+const isValidIntegerString = (value) => {
+  const regex = /^\d+$/
+  return regex.test(value)
+}
+
+/**
+ * Gets the number of lines in a string, based on the number of `\n` characters.
+ * @param {string} content
+ * @returns {number}
+ */
+const getNumberOfLines = (content) => {
+  return content.split("\n").length
+}
+
+/**
+ * Gets the line number string from a fragment.
+ * @param {string} fragment
+ * @returns {string}
+ * @example getLineNumberStringFromFragment("#L50") // 50
+ */
+const getLineNumberStringFromFragment = (fragment) => {
+  return fragment.slice(2)
+}
+
 module.exports = {
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
   getMarkdownIdOrAnchorNameFragments,
+  isValidIntegerString,
+  getNumberOfLines,
+  getLineNumberStringFromFragment,
 }

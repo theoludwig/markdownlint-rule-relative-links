@@ -46,6 +46,19 @@ test("ensure the rule validates correctly", async (t) => {
           '"./awesome.md#not-an-id-should-be-ignored" should have a valid fragment identifier',
       },
       {
+        name: "with invalid heading with #L fragment",
+        fixturePath:
+          "test/fixtures/invalid/invalid-heading-with-L-fragment/invalid-heading-with-L-fragment.md",
+        error: '"./awesome.md#L7abc" should have a valid fragment identifier',
+      },
+      {
+        name: "with a invalid line number fragment",
+        fixturePath:
+          "test/fixtures/invalid/invalid-line-number-fragment/invalid-line-number-fragment.md",
+        error:
+          '"./awesome.md#L7" should have a valid fragment identifier, "./awesome.md#L7" should have at least 7 lines to be valid',
+      },
+      {
         name: "with a non-existing anchor name fragment",
         fixturePath:
           "test/fixtures/invalid/non-existing-anchor-name-fragment/non-existing-anchor-name-fragment.md",
@@ -119,6 +132,11 @@ test("ensure the rule validates correctly", async (t) => {
           "test/fixtures/valid/existing-element-id-fragment/existing-element-id-fragment.md",
       },
       {
+        name: "with an existing heading fragment (case insensitive)",
+        fixturePath:
+          "test/fixtures/valid/existing-heading-case-insensitive/existing-heading-case-insensitive.md",
+      },
+      {
         name: "with an existing heading fragment",
         fixturePath:
           "test/fixtures/valid/existing-heading-fragment/existing-heading-fragment.md",
@@ -127,6 +145,16 @@ test("ensure the rule validates correctly", async (t) => {
         name: "should only parse markdown files for fragments checking",
         fixturePath:
           "test/fixtures/valid/only-parse-markdown-files-for-fragments/only-parse-markdown-files-for-fragments.md",
+      },
+      {
+        name: 'with valid heading "like" line number fragment',
+        fixturePath:
+          "test/fixtures/valid/valid-heading-like-number-fragment/valid-heading-like-number-fragment.md",
+      },
+      {
+        name: "with valid line number fragment",
+        fixturePath:
+          "test/fixtures/valid/valid-line-number-fragment/valid-line-number-fragment.md",
       },
       {
         name: "with an existing file",

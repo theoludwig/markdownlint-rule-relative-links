@@ -8,6 +8,9 @@ const {
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
   getMarkdownIdOrAnchorNameFragments,
+  isValidIntegerString,
+  getNumberOfLines,
+  getLineNumberStringFromFragment,
 } = require("./utils.js")
 
 /** @typedef {import('markdownlint').Rule} MarkdownLintRule */
@@ -121,7 +124,35 @@ const customRule = {
 
         fragmentsHTML.push(...idOrAnchorNameHTMLFragments)
 
-        if (!fragmentsHTML.includes(url.hash)) {
+        if (!fragmentsHTML.includes(url.hash.toLowerCase())) {
+          if (url.hash.startsWith("#L")) {
+            const lineNumberFragmentString = getLineNumberStringFromFragment(
+              url.hash,
+            )
+
+            const hasOnlyDigits = isValidIntegerString(lineNumberFragmentString)
+            if (!hasOnlyDigits) {
+              onError({
+                lineNumber,
+                detail: `${detail} should have a valid fragment identifier`,
+              })
+              continue
+            }
+
+            const lineNumberFragment = Number.parseInt(
+              lineNumberFragmentString,
+              10,
+            )
+            const numberOfLines = getNumberOfLines(fileContent)
+            if (lineNumberFragment > numberOfLines) {
+              onError({
+                lineNumber,
+                detail: `${detail} should have a valid fragment identifier, ${detail} should have at least ${lineNumberFragment} lines to be valid`,
+              })
+              continue
+            }
+          }
+
           onError({
             lineNumber,
             detail: `${detail} should have a valid fragment identifier`,
