@@ -22,6 +22,7 @@ const customRule = {
   names: ["relative-links"],
   description: "Relative links should be valid",
   tags: ["links"],
+  parser: "markdownit",
   function: (params, onError) => {
     filterTokens(params, "inline", (token) => {
       const children = token.children ?? []

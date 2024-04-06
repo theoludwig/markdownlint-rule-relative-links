@@ -15,7 +15,7 @@
  * @returns {void}
  */
 const filterTokens = (params, type, handler) => {
-  for (const token of params.tokens) {
+  for (const token of params.parsers.markdownit.tokens) {
     if (token.type === type) {
       handler(token)
     }
