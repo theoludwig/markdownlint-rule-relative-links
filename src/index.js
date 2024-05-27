@@ -11,6 +11,7 @@ const {
   isValidIntegerString,
   getNumberOfLines,
   getLineNumberStringFromFragment,
+  lineFragmentRe,
 } = require("./utils.js")
 
 /** @typedef {import('markdownlint').Rule} MarkdownLintRule */
@@ -133,6 +134,10 @@ const customRule = {
 
             const hasOnlyDigits = isValidIntegerString(lineNumberFragmentString)
             if (!hasOnlyDigits) {
+              if (lineFragmentRe.test(url.hash)) {
+                continue
+              }
+
               onError({
                 lineNumber,
                 detail: `${detail} should have a valid fragment identifier`,

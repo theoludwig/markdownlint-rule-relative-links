@@ -4,6 +4,8 @@ const { getHtmlAttributeRe } = require("./markdownlint-rule-helpers/helpers.js")
 
 const markdownIt = new MarkdownIt({ html: true })
 
+const lineFragmentRe = /^#(?:L\d+(?:C\d+)?-L\d+(?:C\d+)?|L\d+)$/
+
 /**
  * Converts a Markdown heading into an HTML fragment according to the rules
  * used by GitHub.
@@ -151,6 +153,7 @@ const getLineNumberStringFromFragment = (fragment) => {
 }
 
 module.exports = {
+  lineFragmentRe,
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
   getMarkdownIdOrAnchorNameFragments,
