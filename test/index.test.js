@@ -48,6 +48,14 @@ test("ensure the rule validates correctly", async (t) => {
         ],
       },
       {
+        name: "should be invalid with uppercase letters in fragment (case sensitive)",
+        fixturePath:
+          "test/fixtures/invalid/invalid-heading-case-sensitive/invalid-heading-case-sensitive.md",
+        errors: [
+          '"./awesome.md#ExistIng-Heading" should have a valid fragment identifier',
+        ],
+      },
+      {
         name: "should be invalid with invalid heading with #L fragment",
         fixturePath:
           "test/fixtures/invalid/invalid-heading-with-L-fragment/invalid-heading-with-L-fragment.md",
@@ -148,7 +156,11 @@ test("ensure the rule validates correctly", async (t) => {
           )
           return result.errorDetail
         })
-        assert.deepStrictEqual(errorsDetails, errors)
+        assert.deepStrictEqual(
+          errorsDetails,
+          errors,
+          `${fixturePath}: Expected errors`,
+        )
       })
     }
   })
@@ -164,11 +176,6 @@ test("ensure the rule validates correctly", async (t) => {
         name: "should be valid with an existing element id fragment",
         fixturePath:
           "test/fixtures/valid/existing-element-id-fragment/existing-element-id-fragment.md",
-      },
-      {
-        name: "should be valid with an existing heading fragment (case insensitive)",
-        fixturePath:
-          "test/fixtures/valid/existing-heading-case-insensitive/existing-heading-case-insensitive.md",
       },
       {
         name: "should be valid with an existing heading fragment",
@@ -232,7 +239,7 @@ test("ensure the rule validates correctly", async (t) => {
         assert.equal(
           errorsDetails.length,
           0,
-          `Expected no errors, got ${errorsDetails.join(", ")}`,
+          `${fixturePath}: Expected no errors, got ${errorsDetails.join(", ")}`,
         )
       })
     }

@@ -1,3 +1,3 @@
 # Valid
 
-[Link fragment](./awesome.md#L7)
+[Link fragment](./awesome.md#l7)

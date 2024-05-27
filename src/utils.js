@@ -28,7 +28,7 @@ const convertHeadingToHTMLFragment = (inlineText) => {
           "",
         )
         .replace(/ /gu, "-"),
-    ).toLowerCase()
+    )
   )
 }
 

@@ -126,7 +126,7 @@ const customRule = {
 
         fragmentsHTML.push(...idOrAnchorNameHTMLFragments)
 
-        if (!fragmentsHTML.includes(url.hash.toLowerCase())) {
+        if (!fragmentsHTML.includes(url.hash)) {
           if (url.hash.startsWith("#L")) {
             const lineNumberFragmentString = getLineNumberStringFromFragment(
               url.hash,
@@ -157,6 +157,8 @@ const customRule = {
               })
               continue
             }
+
+            continue
           }
 
           onError({
