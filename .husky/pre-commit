@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-npm run lint:staged
-npm run lint:javascript
-npm run test

@@ -107,7 +107,7 @@ We recommend configuring [markdownlint-cli2](https://github.com/DavidAnson/markd
 ## Usage
 
 ```sh
-npm run lint:markdown
+node --run lint:markdown
 ```
 
 ## 💡 Contributing

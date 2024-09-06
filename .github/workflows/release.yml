@@ -2,7 +2,7 @@ name: "Release"
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
   release:
@@ -13,15 +13,15 @@ jobs:
       pull-requests: "write"
       id-token: "write"
     steps:
-      - uses: "actions/checkout@v4.1.1"
+      - uses: "actions/checkout@v4.1.7"
         with:
           fetch-depth: 0
           persist-credentials: false
 
       - name: "Setup Node.js"
-        uses: "actions/setup-node@v4.0.2"
+        uses: "actions/setup-node@v4.0.3"
         with:
-          node-version: "lts/*"
+          node-version: "22.x"
           cache: "npm"
 
       - name: "Install dependencies"
@@ -31,7 +31,7 @@ jobs:
         run: "npm audit signatures"
 
       - name: "Release"
-        run: "npm run release"
+        run: "node --run release"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

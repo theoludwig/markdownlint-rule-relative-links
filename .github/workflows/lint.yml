@@ -4,26 +4,32 @@ on:
   push:
     branches: [develop]
   pull_request:
-    branches: [master, develop]
+    branches: [main, develop]
 
 jobs:
   lint:
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "actions/checkout@v4.1.1"
+      - uses: "actions/checkout@v4.1.7"
 
       - name: "Setup Node.js"
-        uses: "actions/setup-node@v4.0.2"
+        uses: "actions/setup-node@v4.0.3"
         with:
-          node-version: "lts/*"
+          node-version: "22.x"
           cache: "npm"
 
       - name: "Install dependencies"
         run: "npm clean-install"
 
-      - run: 'npm run lint:commit -- --to "${{ github.sha }}"'
-      - run: "npm run lint:editorconfig"
-      - run: "npm run lint:markdown"
-      - run: "npm run lint:eslint"
-      - run: "npm run lint:prettier"
-      - run: "npm run lint:javascript"
+      - run: "node --run lint:editorconfig"
+      - run: "node --run lint:markdown"
+      - run: "node --run lint:eslint"
+      - run: "node --run lint:prettier"
+      - run: "node --run lint:javascript"
+
+  commitlint:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v4.1.7"
+
+      - uses: "wagoid/commitlint-github-action@v6.1.2"
