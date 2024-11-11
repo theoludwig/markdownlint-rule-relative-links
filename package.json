@@ -26,8 +26,7 @@
     "provenance": true
   },
   "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=9.0.0"
+    "node": ">=16.0.0"
   },
   "scripts": {
     "lint:editorconfig": "editorconfig-checker",
