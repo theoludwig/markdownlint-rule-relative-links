@@ -15,7 +15,7 @@ jobs:
       - name: "Setup Node.js"
         uses: "actions/setup-node@v4.0.3"
         with:
-          node-version: "22.x"
+          node-version: "lts/*"
           cache: "npm"
 
       - name: "Install dependencies"
@@ -25,7 +25,7 @@ jobs:
       - run: "node --run lint:markdown"
       - run: "node --run lint:eslint"
       - run: "node --run lint:prettier"
-      - run: "node --run lint:javascript"
+      - run: "node --run lint:typescript"
 
   commitlint:
     runs-on: "ubuntu-latest"

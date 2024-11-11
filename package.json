@@ -32,9 +32,9 @@
   "scripts": {
     "lint:editorconfig": "editorconfig-checker",
     "lint:markdown": "markdownlint-cli2",
-    "lint:eslint": "eslint . --max-warnings 0 --report-unused-disable-directives --ignore-path .gitignore",
-    "lint:prettier": "prettier . --check --ignore-path .gitignore",
-    "lint:javascript": "tsc --project jsconfig.json --noEmit",
+    "lint:eslint": "eslint . --max-warnings 0",
+    "lint:prettier": "prettier . --check",
+    "lint:typescript": "tsc --noEmit",
     "test": "node --test",
     "release": "semantic-release"
   },
@@ -43,16 +43,19 @@
   },
   "devDependencies": {
     "@types/markdown-it": "14.1.2",
-    "@types/node": "20.12.12",
-    "editorconfig-checker": "5.1.8",
-    "eslint": "8.57.0",
-    "eslint-config-conventions": "14.4.0",
+    "@types/node": "22.9.0",
+    "editorconfig-checker": "6.0.0",
+    "eslint": "9.14.0",
+    "eslint-config-conventions": "17.0.0",
     "eslint-plugin-promise": "7.1.0",
-    "eslint-plugin-unicorn": "55.0.0",
-    "markdownlint": "0.35.0",
-    "markdownlint-cli2": "0.14.0",
+    "eslint-plugin-unicorn": "56.0.0",
+    "eslint-plugin-import-x": "4.4.0",
+    "globals": "15.12.0",
+    "markdownlint": "0.36.1",
+    "markdownlint-cli2": "0.15.0",
     "prettier": "3.3.3",
     "semantic-release": "23.1.1",
-    "typescript": "5.5.4"
+    "typescript-eslint": "8.13.0",
+    "typescript": "5.6.3"
   }
 }

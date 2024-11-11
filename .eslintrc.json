@@ -1,4 +1,0 @@
-{
-  "extends": ["conventions"],
-  "plugins": ["promise", "unicorn"]
-}
