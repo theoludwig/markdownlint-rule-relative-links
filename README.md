@@ -80,18 +80,22 @@ There are various ways [markdownlint](https://github.com/DavidAnson/markdownlint
 
 We recommend configuring [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2) over [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) for compatibility with the [vscode-markdownlint](https://github.com/DavidAnson/vscode-markdownlint) extension.
 
-`.markdownlint-cli2.jsonc`
+`.markdownlint-cli2.mjs`
 
-```json
-{
-  "config": {
-    "default": true,
-    "relative-links": true
+```js
+import relativeLinksRule from "markdownlint-rule-relative-links"
+
+const config = {
+  config: {
+    default: true,
+    "relative-links": true,
   },
-  "globs": ["**/*.md"],
-  "ignores": ["**/node_modules"],
-  "customRules": ["markdownlint-rule-relative-links"]
+  globs: ["**/*.md"],
+  ignores: ["**/node_modules"],
+  customRules: [relativeLinksRule],
 }
+
+export default config
 ```
 
 `package.json`
