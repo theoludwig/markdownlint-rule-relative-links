@@ -14,7 +14,7 @@
  * @param {(token: MarkdownItToken) => void} handler Callback function.
  * @returns {void}
  */
-const filterTokens = (params, type, handler) => {
+export const filterTokens = (params, type, handler) => {
   for (const token of params.parsers.markdownit.tokens) {
     if (token.type === type) {
       handler(token)
@@ -28,11 +28,6 @@ const filterTokens = (params, type, handler) => {
  * @param {string} name HTML attribute name.
  * @returns {RegExp} Regular Expression for matching.
  */
-const getHtmlAttributeRe = (name) => {
+export const getHtmlAttributeRe = (name) => {
   return new RegExp(`\\s${name}\\s*=\\s*['"]?([^'"\\s>]*)`, "iu")
-}
-
-module.exports = {
-  filterTokens,
-  getHtmlAttributeRe,
 }

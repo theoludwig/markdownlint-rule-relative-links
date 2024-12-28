@@ -18,6 +18,8 @@
     "markdownlint-rule"
   ],
   "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "type": "module",
   "files": [
     "src"
   ],
@@ -26,7 +28,7 @@
     "provenance": true
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=22.0.0"
   },
   "scripts": {
     "lint:editorconfig": "editorconfig-checker",
@@ -42,19 +44,19 @@
   },
   "devDependencies": {
     "@types/markdown-it": "14.1.2",
-    "@types/node": "22.9.0",
+    "@types/node": "22.10.2",
     "editorconfig-checker": "6.0.0",
-    "eslint": "9.14.0",
-    "eslint-config-conventions": "17.0.0",
-    "eslint-plugin-promise": "7.1.0",
-    "eslint-plugin-unicorn": "56.0.0",
-    "eslint-plugin-import-x": "4.4.0",
-    "globals": "15.12.0",
-    "markdownlint": "0.36.1",
-    "markdownlint-cli2": "0.15.0",
-    "prettier": "3.3.3",
-    "semantic-release": "23.1.1",
-    "typescript-eslint": "8.13.0",
-    "typescript": "5.6.3"
+    "eslint": "9.17.0",
+    "eslint-config-conventions": "18.0.0",
+    "eslint-plugin-promise": "7.2.1",
+    "eslint-plugin-unicorn": "56.0.1",
+    "eslint-plugin-import-x": "4.6.1",
+    "globals": "15.14.0",
+    "markdownlint": "0.37.2",
+    "markdownlint-cli2": "0.17.0",
+    "prettier": "3.4.2",
+    "semantic-release": "24.2.0",
+    "typescript-eslint": "8.18.2",
+    "typescript": "5.7.2"
   }
 }

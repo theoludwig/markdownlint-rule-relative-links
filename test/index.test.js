@@ -1,9 +1,9 @@
-const { test } = require("node:test")
-const assert = require("node:assert/strict")
+import { test } from "node:test"
+import assert from "node:assert/strict"
 
-const { markdownlint } = require("markdownlint").promises
+import * as markdownlint from "markdownlint/promise"
 
-const relativeLinksRule = require("../src/index.js")
+import relativeLinksRule from "../src/index.js"
 
 /**
  *
@@ -11,7 +11,7 @@ const relativeLinksRule = require("../src/index.js")
  * @returns
  */
 const validateMarkdownLint = async (fixtureFile) => {
-  const lintResults = await markdownlint({
+  const lintResults = await markdownlint.lint({
     files: [fixtureFile],
     config: {
       default: false,

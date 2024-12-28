@@ -66,7 +66,7 @@ Contributions are welcome to improve the rule, and to alleviate these limitation
 
 ## Prerequisites
 
-[Node.js](https://nodejs.org/) >= 16.0.0
+[Node.js](https://nodejs.org/) >= 22.0.0
 
 ## Installation
 

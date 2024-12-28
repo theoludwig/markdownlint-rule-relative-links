@@ -1,14 +1,14 @@
-const { test } = require("node:test")
-const assert = require("node:assert/strict")
+import { test } from "node:test"
+import assert from "node:assert/strict"
 
-const {
+import {
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
   getMarkdownIdOrAnchorNameFragments,
   isValidIntegerString,
   getNumberOfLines,
   getLineNumberStringFromFragment,
-} = require("../src/utils.js")
+} from "../src/utils.js"
 
 test("utils", async (t) => {
   await t.test("convertHeadingToHTMLFragment", async () => {

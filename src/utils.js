@@ -1,10 +1,10 @@
-const MarkdownIt = require("markdown-it")
+import MarkdownIt from "markdown-it"
 
-const { getHtmlAttributeRe } = require("./markdownlint-rule-helpers/helpers.js")
+import { getHtmlAttributeRe } from "./markdownlint-rule-helpers/helpers.js"
 
 const markdownIt = new MarkdownIt({ html: true })
 
-const lineFragmentRe = /^#(?:L\d+(?:C\d+)?-L\d+(?:C\d+)?|L\d+)$/
+export const lineFragmentRe = /^#(?:L\d+(?:C\d+)?-L\d+(?:C\d+)?|L\d+)$/
 
 /**
  * Converts a Markdown heading into an HTML fragment according to the rules
@@ -14,7 +14,7 @@ const lineFragmentRe = /^#(?:L\d+(?:C\d+)?-L\d+(?:C\d+)?|L\d+)$/
  * @param {string} inlineText Inline token for heading.
  * @returns {string} Fragment string for heading.
  */
-const convertHeadingToHTMLFragment = (inlineText) => {
+export const convertHeadingToHTMLFragment = (inlineText) => {
   return (
     "#" +
     encodeURIComponent(
@@ -40,7 +40,7 @@ const ignoredTokens = new Set(["heading_open", "heading_close"])
  * @param {string} content
  * @returns {string[]}
  */
-const getMarkdownHeadings = (content) => {
+export const getMarkdownHeadings = (content) => {
   const tokens = markdownIt.parse(content, {})
 
   /** @type {string[]} */
@@ -88,7 +88,7 @@ const idHTMLAttributeRegex = getHtmlAttributeRe("id")
  * @param {string} content
  * @returns {string[]}
  */
-const getMarkdownIdOrAnchorNameFragments = (content) => {
+export const getMarkdownIdOrAnchorNameFragments = (content) => {
   const tokens = markdownIt.parse(content, {})
 
   /** @type {string[]} */
@@ -128,7 +128,7 @@ const getMarkdownIdOrAnchorNameFragments = (content) => {
  * @example isValidIntegerString("1abc") // false
  * @example isValidIntegerString("1.0") // false
  */
-const isValidIntegerString = (value) => {
+export const isValidIntegerString = (value) => {
   const regex = /^\d+$/
   return regex.test(value)
 }
@@ -138,7 +138,7 @@ const isValidIntegerString = (value) => {
  * @param {string} content
  * @returns {number}
  */
-const getNumberOfLines = (content) => {
+export const getNumberOfLines = (content) => {
   return content.split("\n").length
 }
 
@@ -148,16 +148,6 @@ const getNumberOfLines = (content) => {
  * @returns {string}
  * @example getLineNumberStringFromFragment("#L50") // 50
  */
-const getLineNumberStringFromFragment = (fragment) => {
+export const getLineNumberStringFromFragment = (fragment) => {
   return fragment.slice(2)
-}
-
-module.exports = {
-  lineFragmentRe,
-  convertHeadingToHTMLFragment,
-  getMarkdownHeadings,
-  getMarkdownIdOrAnchorNameFragments,
-  isValidIntegerString,
-  getNumberOfLines,
-  getLineNumberStringFromFragment,
 }

@@ -1,10 +1,8 @@
-"use strict"
+import { pathToFileURL } from "node:url"
+import fs from "node:fs"
 
-const { pathToFileURL } = require("node:url")
-const fs = require("node:fs")
-
-const { filterTokens } = require("./markdownlint-rule-helpers/helpers.js")
-const {
+import { filterTokens } from "./markdownlint-rule-helpers/helpers.js"
+import {
   convertHeadingToHTMLFragment,
   getMarkdownHeadings,
   getMarkdownIdOrAnchorNameFragments,
@@ -12,14 +10,14 @@ const {
   getNumberOfLines,
   getLineNumberStringFromFragment,
   lineFragmentRe,
-} = require("./utils.js")
+} from "./utils.js"
 
 /** @typedef {import('markdownlint').Rule} MarkdownLintRule */
 
 /**
  * @type {MarkdownLintRule}
  */
-const customRule = {
+const relativeLinksRule = {
   names: ["relative-links"],
   description: "Relative links should be valid",
   tags: ["links"],
@@ -172,4 +170,4 @@ const customRule = {
   },
 }
 
-module.exports = customRule
+export default relativeLinksRule

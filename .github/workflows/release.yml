@@ -13,13 +13,13 @@ jobs:
       pull-requests: "write"
       id-token: "write"
     steps:
-      - uses: "actions/checkout@v4.1.7"
+      - uses: "actions/checkout@v4.2.2"
         with:
           fetch-depth: 0
           persist-credentials: false
 
       - name: "Setup Node.js"
-        uses: "actions/setup-node@v4.0.3"
+        uses: "actions/setup-node@v4.1.0"
         with:
           node-version: "lts/*"
           cache: "npm"
