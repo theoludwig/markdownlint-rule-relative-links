@@ -1,4 +1,4 @@
-import relativeLinksRule from "./src/index.js"
+import relativeLinksRule, { markdownIt } from "./src/index.js"
 
 const config = {
   config: {
@@ -10,6 +10,9 @@ const config = {
   globs: ["**/*.md"],
   ignores: ["**/node_modules", "**/test/fixtures/**"],
   customRules: [relativeLinksRule],
+  markdownItFactory: () => {
+    return markdownIt
+  },
 }
 
 export default config

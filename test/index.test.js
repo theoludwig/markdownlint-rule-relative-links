@@ -3,7 +3,7 @@ import assert from "node:assert/strict"
 
 import * as markdownlint from "markdownlint/promise"
 
-import relativeLinksRule from "../src/index.js"
+import relativeLinksRule, { markdownIt } from "../src/index.js"
 
 /**
  *
@@ -18,6 +18,9 @@ const validateMarkdownLint = async (fixtureFile) => {
       "relative-links": true,
     },
     customRules: [relativeLinksRule],
+    markdownItFactory: () => {
+      return markdownIt
+    },
   })
   return lintResults[fixtureFile]
 }

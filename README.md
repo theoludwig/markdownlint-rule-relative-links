@@ -83,7 +83,7 @@ We recommend configuring [markdownlint-cli2](https://github.com/DavidAnson/markd
 `.markdownlint-cli2.mjs`
 
 ```js
-import relativeLinksRule from "markdownlint-rule-relative-links"
+import relativeLinksRule, { markdownIt } from "markdownlint-rule-relative-links"
 
 const config = {
   config: {
@@ -93,6 +93,9 @@ const config = {
   globs: ["**/*.md"],
   ignores: ["**/node_modules"],
   customRules: [relativeLinksRule],
+  markdownItFactory: () => {
+    return markdownIt
+  },
 }
 
 export default config

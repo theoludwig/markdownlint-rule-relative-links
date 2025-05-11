@@ -12,6 +12,8 @@ import {
   lineFragmentRe,
 } from "./utils.js"
 
+export { markdownIt } from "./utils.js"
+
 /** @typedef {import('markdownlint').Rule} MarkdownLintRule */
 
 /**

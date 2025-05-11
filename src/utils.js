@@ -2,7 +2,7 @@ import MarkdownIt from "markdown-it"
 
 import { getHtmlAttributeRe } from "./markdownlint-rule-helpers/helpers.js"
 
-const markdownIt = new MarkdownIt({ html: true })
+export const markdownIt = new MarkdownIt({ html: true })
 
 export const lineFragmentRe = /^#(?:L\d+(?:C\d+)?-L\d+(?:C\d+)?|L\d+)$/
 
