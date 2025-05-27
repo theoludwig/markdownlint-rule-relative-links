@@ -5,17 +5,22 @@ import * as markdownlint from "markdownlint/promise"
 
 import relativeLinksRule, { markdownIt } from "../src/index.js"
 
+const defaultConfig = {
+  "relative-links": true,
+}
+
 /**
  *
  * @param {string} fixtureFile
+ * @param {Object} config
  * @returns
  */
-const validateMarkdownLint = async (fixtureFile) => {
+const validateMarkdownLint = async (fixtureFile, config = defaultConfig) => {
   const lintResults = await markdownlint.lint({
     files: [fixtureFile],
     config: {
       default: false,
-      "relative-links": true,
+      ...config,
     },
     customRules: [relativeLinksRule],
     markdownItFactory: () => {
@@ -146,11 +151,27 @@ test("ensure the rule validates correctly", async (t) => {
         fixturePath: "test/fixtures/invalid/non-existing-image.md",
         errors: ['"./image.png" should exist in the file system'],
       },
+      {
+        name: "should be invalid with incorrect absolute paths",
+        fixturePath: "test/fixtures/config-dependent/absolute-paths.md",
+        errors: ['"/test/fixtures/image.png" should exist in the file system'],
+        config: {
+          "relative-links": {
+            root_path: "test",
+          },
+        },
+      },
     ]
 
-    for (const { name, fixturePath, errors } of testCases) {
+    for (const {
+      name,
+      fixturePath,
+      errors,
+      config = defaultConfig,
+    } of testCases) {
       await t.test(name, async () => {
-        const lintResults = (await validateMarkdownLint(fixturePath)) ?? []
+        const lintResults =
+          (await validateMarkdownLint(fixturePath, config)) ?? []
         const errorsDetails = lintResults.map((result) => {
           assert.deepEqual(result.ruleNames, relativeLinksRule.names)
           assert.deepEqual(
@@ -219,7 +240,7 @@ test("ensure the rule validates correctly", async (t) => {
         fixturePath: "test/fixtures/valid/existing-image.md",
       },
       {
-        name: "should ignore absolute paths",
+        name: "should ignore absolute paths if root_path is not set",
         fixturePath: "test/fixtures/valid/ignore-absolute-paths.md",
       },
       {
@@ -231,11 +252,21 @@ test("ensure the rule validates correctly", async (t) => {
         fixturePath:
           "test/fixtures/valid/ignore-fragment-checking-in-own-file.md",
       },
+      {
+        name: "should be valid with correct absolute paths if root_path is set",
+        fixturePath: "test/fixtures/config-dependent/absolute-paths.md",
+        config: {
+          "relative-links": {
+            root_path: ".",
+          },
+        },
+      },
     ]
 
-    for (const { name, fixturePath } of testCases) {
+    for (const { name, fixturePath, config = defaultConfig } of testCases) {
       await t.test(name, async () => {
-        const lintResults = (await validateMarkdownLint(fixturePath)) ?? []
+        const lintResults =
+          (await validateMarkdownLint(fixturePath, config)) ?? []
         const errorsDetails = lintResults.map((result) => {
           return result.errorDetail
         })
