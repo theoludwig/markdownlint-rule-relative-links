@@ -51,7 +51,7 @@ awesome.md:3 relative-links Relative links should be valid ["./invalid.txt" shou
 - Support images (e.g: `![Image](./image.png)`).
 - Support links fragments similar to the [built-in `markdownlint` rule - MD051](https://github.com/DavidAnson/markdownlint/blob/main/doc/md051.md) (e.g: `[Link](./awesome.md#heading)`).
 - Ignore external links and absolute paths as it only checks relative links (e.g: `https://example.com/` or `/absolute/path.png`).
-- If necessary, absolute paths can be validated too, with `root_path` configuration option.
+- If necessary, absolute paths can be validated too, with [`root_path` configuration option](#absolute-paths).
 
 ### Limitations
 
