@@ -51,17 +51,25 @@ const relativeLinksRule = {
           }
         }
 
-        if (hrefSrc == null) {
+        if (hrefSrc == null || hrefSrc.startsWith("#")) {
           continue
         }
 
-        const url = new URL(hrefSrc, pathToFileURL(params.name))
-        const isRelative =
-          url.protocol === "file:" &&
-          !hrefSrc.startsWith("/") &&
-          !hrefSrc.startsWith("#")
+        let url
 
-        if (!isRelative) {
+        if (hrefSrc.startsWith("/")) {
+          const rootPath = params.config["root_path"]
+
+          if (!rootPath) {
+            continue
+          }
+
+          url = new URL(`.${hrefSrc}`, pathToFileURL(`${rootPath}/`))
+        } else {
+          url = new URL(hrefSrc, pathToFileURL(params.name))
+        }
+
+        if (url.protocol !== "file:") {
           continue
         }
 

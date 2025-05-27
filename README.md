@@ -51,12 +51,13 @@ awesome.md:3 relative-links Relative links should be valid ["./invalid.txt" shou
 - Support images (e.g: `![Image](./image.png)`).
 - Support links fragments similar to the [built-in `markdownlint` rule - MD051](https://github.com/DavidAnson/markdownlint/blob/main/doc/md051.md) (e.g: `[Link](./awesome.md#heading)`).
 - Ignore external links and absolute paths as it only checks relative links (e.g: `https://example.com/` or `/absolute/path.png`).
+- If necessary, absolute paths can be validated too, with `root_path` configuration option.
 
 ### Limitations
 
 - Only images and links defined using markdown syntax are validated, html syntax is ignored (e.g: `<a href="./link.txt" />` or `<img src="./image.png" />`).
 
-Contributions are welcome to improve the rule, and to alleviate these limitations. See [CONTRIBUTING.md](./CONTRIBUTING.md) for more information.
+Contributions are welcome to improve the rule, and to alleviate these limitations. See [CONTRIBUTING.md](/CONTRIBUTING.md) for more information.
 
 ### Related links
 
@@ -108,6 +109,25 @@ export default config
 }
 ```
 
+### Absolute paths
+
+GitHub (and, likely, other similar platforms) resolves absolute paths in Markdown links relative to the repository root.
+
+To validate such links, add `root_path` option to the configuration:
+
+```js
+  config: {
+    default: true,
+    "relative-links": {
+      root_path: ".",
+    },
+  },
+```
+
+After this change, all absolute paths will be converted to relative paths, and will be resolved relative to the specified directory.
+
+For example, if you run markdownlint from a subdirectory (if `package.json` is located in a subdirectory), you should set `root_path` to `".."`.
+
 ## Usage
 
 ```sh
@@ -118,8 +138,8 @@ node --run lint:markdown
 
 Anyone can help to improve the project, submit a Feature Request, a bug report or even correct a simple spelling mistake.
 
-The steps to contribute can be found in the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
+The steps to contribute can be found in the [CONTRIBUTING.md](/CONTRIBUTING.md) file.
 
 ## 📄 License
 
-[MIT](./LICENSE)
+[MIT](/LICENSE)

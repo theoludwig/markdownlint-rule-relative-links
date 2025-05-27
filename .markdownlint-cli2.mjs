@@ -4,7 +4,9 @@ const config = {
   config: {
     extends: "markdownlint/style/prettier",
     default: true,
-    "relative-links": true,
+    "relative-links": {
+      root_path: ".",
+    },
     "no-inline-html": false,
   },
   globs: ["**/*.md"],
