@@ -44,19 +44,19 @@
   },
   "devDependencies": {
     "@types/markdown-it": "14.1.2",
-    "@types/node": "22.15.17",
-    "editorconfig-checker": "6.0.1",
-    "eslint": "9.26.0",
-    "eslint-config-conventions": "19.2.0",
+    "@types/node": "24.9.2",
+    "editorconfig-checker": "6.1.1",
+    "eslint": "9.39.0",
+    "eslint-config-conventions": "21.1.0",
     "eslint-plugin-promise": "7.2.1",
-    "eslint-plugin-unicorn": "59.0.1",
-    "eslint-plugin-import-x": "4.11.1",
-    "globals": "16.1.0",
+    "eslint-plugin-unicorn": "62.0.0",
+    "eslint-plugin-import-x": "4.16.1",
+    "globals": "16.4.0",
     "markdownlint": "0.38.0",
-    "markdownlint-cli2": "0.18.0",
-    "prettier": "3.5.3",
-    "semantic-release": "24.2.3",
-    "typescript-eslint": "8.32.0",
-    "typescript": "5.8.3"
+    "markdownlint-cli2": "0.18.1",
+    "prettier": "3.6.2",
+    "semantic-release": "25.0.1",
+    "typescript-eslint": "8.46.2",
+    "typescript": "5.9.3"
   }
 }
