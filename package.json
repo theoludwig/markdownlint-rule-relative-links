@@ -1,41 +1,37 @@
 {
   "name": "markdownlint-rule-relative-links",
   "version": "0.0.0-development",
-  "public": true,
   "description": "Custom rule for markdownlint to validate relative links.",
-  "author": "Théo LUDWIG <contact@theoludwig.fr>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/theoludwig/markdownlint-rule-relative-links.git"
-  },
-  "bugs": {
-    "url": "https://github.com/theoludwig/markdownlint-rule-relative-links/issues"
-  },
-  "homepage": "https://github.com/theoludwig/markdownlint-rule-relative-links#readme",
   "keywords": [
     "markdownlint",
     "markdownlint-rule"
   ],
-  "main": "src/index.js",
-  "types": "src/index.d.ts",
-  "type": "module",
+  "homepage": "https://github.com/theoludwig/markdownlint-rule-relative-links#readme",
+  "bugs": {
+    "url": "https://github.com/theoludwig/markdownlint-rule-relative-links/issues"
+  },
+  "license": "MIT",
+  "author": "Théo LUDWIG <contact@theoludwig.fr>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theoludwig/markdownlint-rule-relative-links.git"
+  },
   "files": [
     "src"
   ],
+  "type": "module",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "publishConfig": {
     "access": "public",
     "provenance": true
   },
-  "engines": {
-    "node": ">=22.0.0"
-  },
   "scripts": {
-    "lint:editorconfig": "editorconfig-checker",
     "lint:markdown": "markdownlint-cli2",
-    "lint:eslint": "eslint . --max-warnings 0",
-    "lint:prettier": "prettier . --check",
     "lint:typescript": "tsc --noEmit",
+    "lint:oxlint": "oxlint . --deny-warnings --report-unused-disable-directives",
+    "lint:oxfmt": "oxfmt . --check",
+    "oxfmt": "oxfmt .",
     "test": "node --test",
     "release": "semantic-release"
   },
@@ -45,18 +41,17 @@
   "devDependencies": {
     "@types/markdown-it": "14.1.2",
     "@types/node": "25.2.1",
-    "editorconfig-checker": "6.1.1",
-    "eslint": "9.39.2",
     "eslint-config-conventions": "21.2.0",
-    "eslint-plugin-promise": "7.2.1",
-    "eslint-plugin-unicorn": "62.0.0",
-    "eslint-plugin-import-x": "4.16.1",
-    "globals": "17.3.0",
     "markdownlint": "0.40.0",
     "markdownlint-cli2": "0.20.0",
-    "prettier": "3.8.1",
+    "oxfmt": "0.28.0",
+    "oxlint": "1.43.0",
+    "oxlint-tsgolint": "0.11.4",
     "semantic-release": "25.0.3",
-    "typescript-eslint": "8.54.0",
     "typescript": "5.9.3"
-  }
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "public": true
 }

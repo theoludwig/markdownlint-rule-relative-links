@@ -4,7 +4,7 @@ Thanks a lot for your interest in contributing to **markdownlint-rule-relative-l
 
 ## Code of Conduct
 
-**markdownlint-rule-relative-links** adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as its Code of Conduct, and we expect project participants to adhere to it. Please read [the full text](/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+**markdownlint-rule-relative-links** adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as its Code of Conduct, and we expect project participants to adhere to it. Please read [the full text](./CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
 
 ## Open Development
 

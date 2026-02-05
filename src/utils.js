@@ -23,10 +23,7 @@ export const convertHeadingToHTMLFragment = (inlineText) => {
         // RegExp source with Ruby's \p{Word} expanded into its General Categories
         // https://github.com/gjtorikian/html-pipeline/blob/main/lib/html/pipeline/toc_filter.rb
         // https://ruby-doc.org/core-3.0.2/Regexp.html
-        .replace(
-          /[^\p{Letter}\p{Mark}\p{Number}\p{Connector_Punctuation}\- ]/gu,
-          "",
-        )
+        .replace(/[^\p{Letter}\p{Mark}\p{Number}\p{Connector_Punctuation}\- ]/gu, "")
         .replace(/ /gu, "-"),
     )
   )
@@ -96,8 +93,7 @@ export const getMarkdownIdOrAnchorNameFragments = (content) => {
 
   for (const token of tokens) {
     const regexMatch =
-      idHTMLAttributeRegex.exec(token.content) ||
-      nameHTMLAttributeRegex.exec(token.content)
+      idHTMLAttributeRegex.exec(token.content) || nameHTMLAttributeRegex.exec(token.content)
     if (regexMatch == null) {
       continue
     }

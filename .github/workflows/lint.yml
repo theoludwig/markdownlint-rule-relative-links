@@ -21,8 +21,7 @@ jobs:
       - name: "Install dependencies"
         run: "npm clean-install"
 
-      - run: "node --run lint:editorconfig"
       - run: "node --run lint:markdown"
-      - run: "node --run lint:eslint"
-      - run: "node --run lint:prettier"
       - run: "node --run lint:typescript"
+      - run: "node --run lint:oxlint"
+      - run: "node --run lint:oxfmt"

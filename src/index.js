@@ -116,8 +116,7 @@ const relativeLinksRule = {
 
         const fileContent = fs.readFileSync(url, { encoding: "utf8" })
         const headings = getMarkdownHeadings(fileContent)
-        const idOrAnchorNameHTMLFragments =
-          getMarkdownIdOrAnchorNameFragments(fileContent)
+        const idOrAnchorNameHTMLFragments = getMarkdownIdOrAnchorNameFragments(fileContent)
 
         /** @type {Map<string, number>} */
         const fragments = new Map()
@@ -136,9 +135,7 @@ const relativeLinksRule = {
 
         if (!fragmentsHTML.includes(url.hash)) {
           if (url.hash.startsWith("#L")) {
-            const lineNumberFragmentString = getLineNumberStringFromFragment(
-              url.hash,
-            )
+            const lineNumberFragmentString = getLineNumberStringFromFragment(url.hash)
 
             const hasOnlyDigits = isValidIntegerString(lineNumberFragmentString)
             if (!hasOnlyDigits) {
@@ -153,10 +150,7 @@ const relativeLinksRule = {
               continue
             }
 
-            const lineNumberFragment = Number.parseInt(
-              lineNumberFragmentString,
-              10,
-            )
+            const lineNumberFragment = Number.parseInt(lineNumberFragmentString, 10)
             const numberOfLines = getNumberOfLines(fileContent)
             if (lineNumberFragment > numberOfLines) {
               onError({
