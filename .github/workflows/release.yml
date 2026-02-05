@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
 
+permissions:
+  id-token: "write" # OIDC
+  contents: "read"
+
 jobs:
   release:
     runs-on: "ubuntu-latest"
@@ -34,4 +38,3 @@ jobs:
         run: "node --run release"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
