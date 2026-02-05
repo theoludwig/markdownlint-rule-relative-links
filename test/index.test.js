@@ -152,7 +152,7 @@ test("ensure the rule validates correctly", async (t) => {
         fixturePath: "test/fixtures/invalid/invalid-image.md",
         errors: [
           '"../not-an-image.txt" should be an image',
-          '"mailto:not-an-image@pictures.com" should exist in the file system',
+          '"mailto:not-an-image@pictures.com" should be an image',
         ],
       },
     ]
@@ -238,6 +238,10 @@ test("ensure the rule validates correctly", async (t) => {
             root_path: ".",
           },
         },
+      },
+      {
+        name: "should ignore external image links",
+        fixturePath: "test/fixtures/valid/ignore-external-image.md",
       },
     ]
 

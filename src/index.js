@@ -70,11 +70,24 @@ const relativeLinksRule = {
           url = new URL(hrefSrc, pathToFileURL(params.name))
         }
 
-        if (url.protocol !== "file:" && type !== "image") {
+        const detail = `"${hrefSrc}"`
+
+        if (
+          type === "image" &&
+          url.protocol !== "file:" &&
+          url.protocol !== "http:" &&
+          url.protocol !== "https:"
+        ) {
+          onError({
+            lineNumber,
+            detail: `${detail} should be an image`,
+          })
           continue
         }
 
-        const detail = `"${hrefSrc}"`
+        if (url.protocol !== "file:") {
+          continue
+        }
 
         if (!fs.existsSync(url)) {
           onError({
