@@ -1,5 +1,6 @@
-import { pathToFileURL } from "node:url"
+import { fileURLToPath, pathToFileURL } from "node:url"
 import fs from "node:fs"
+import mime from "mime"
 
 import { filterTokens } from "./markdownlint-rule-helpers/helpers.js"
 import {
@@ -69,7 +70,7 @@ const relativeLinksRule = {
           url = new URL(hrefSrc, pathToFileURL(params.name))
         }
 
-        if (url.protocol !== "file:") {
+        if (url.protocol !== "file:" && type !== "image") {
           continue
         }
 
@@ -79,6 +80,15 @@ const relativeLinksRule = {
           onError({
             lineNumber,
             detail: `${detail} should exist in the file system`,
+          })
+          continue
+        }
+
+        const mimeType = mime.getType(fileURLToPath(url))
+        if (type === "image" && (mimeType == null || !mimeType.startsWith("image/"))) {
+          onError({
+            lineNumber,
+            detail: `${detail} should be an image`,
           })
           continue
         }

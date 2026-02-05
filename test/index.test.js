@@ -147,6 +147,14 @@ test("ensure the rule validates correctly", async (t) => {
           },
         },
       },
+      {
+        name: "should be invalid with file with an image link that is not an image",
+        fixturePath: "test/fixtures/invalid/invalid-image.md",
+        errors: [
+          '"../not-an-image.txt" should be an image',
+          '"mailto:not-an-image@pictures.com" should exist in the file system',
+        ],
+      },
     ]
 
     for (const { name, fixturePath, errors, config = defaultConfig } of testCases) {
