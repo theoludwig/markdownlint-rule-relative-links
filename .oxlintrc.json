@@ -1,4 +1,10 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "extends": ["node_modules/eslint-config-conventions/.oxlintrc.json"]
+  "extends": ["node_modules/eslint-config-conventions/.oxlintrc.json"],
+  "env": {
+    "builtin": true,
+    "browser": true,
+    "node": true,
+    "shared-node-browser": true
+  }
 }
