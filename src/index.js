@@ -144,7 +144,7 @@ const relativeLinksRule = {
         /** @type {Map<string, number>} */
         const fragments = new Map()
 
-        const fragmentCountDivider = params.config["fragment-count-divider"] ?? "-"
+        const fragmentCountDivider = params.config["fragment-id-divider"] ?? "-"
 
         const fragmentsHTML = headings.map((heading) => {
           const fragment = convertHeadingToHTMLFragment(heading)
