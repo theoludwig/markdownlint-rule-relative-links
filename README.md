@@ -53,7 +53,7 @@ awesome.md:3 relative-links Relative links should be valid ["./invalid.txt" shou
 - Ignore external links and absolute paths as it only checks relative links (e.g: `https://example.com/` or `/absolute/path.png`).
 - If necessary, absolute paths can be validated too, with [`root_path` configuration option](#absolute-paths).
 - Headings defined multiple times in one file, will get enumerated as `<heading><divider><count>`.
-  The `<divider>` is `-` by default and can be customized with `fragment-count-divider`.
+  The divier can be customized with [`fragment-count-divider`](#divider-for-fragment-index).
 
 ### Limitations
 
@@ -129,6 +129,16 @@ To validate such links, add `root_path` option to the configuration:
 After this change, all absolute paths will be converted to relative paths, and will be resolved relative to the specified directory.
 
 For example, if you run markdownlint from a subdirectory (if `package.json` is located in a subdirectory), you should set `root_path` to `".."`.
+
+### Divider for Fragment-Index
+
+Headers with the same name in the same file, are appended with their index when converting them to the fragment.
+Between the original fragment and the index a divider will be inserted.
+The final fragment is `<original-fragment><divider><index>`.
+
+This divider can be configured with `fragment-index-divider` to accomodate different markdown-engines.
+
+The default-value is `-`.
 
 ## Usage
 
