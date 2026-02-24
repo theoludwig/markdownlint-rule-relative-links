@@ -52,6 +52,9 @@ awesome.md:3 relative-links Relative links should be valid ["./invalid.txt" shou
 - Support links fragments similar to the [built-in `markdownlint` rule - MD051](https://github.com/DavidAnson/markdownlint/blob/main/doc/md051.md) (e.g: `[Link](./awesome.md#heading)`).
 - Ignore external links and absolute paths as it only checks relative links (e.g: `https://example.com/` or `/absolute/path.png`).
 - If necessary, absolute paths can be validated too, with [`root_path` configuration option](#absolute-paths).
+- Extra replacements can be defined with `replacement-map` as Key-Value pairs. This can be used, to replace special characters.  
+- Headings defined multiple times in one file, will get enumerated as `<heading><divider><count>`.  
+  The `<divider>` is `-` by default and can be customized with `fragment-count-divider`.  
 
 ### Limitations
 

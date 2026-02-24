@@ -29,6 +29,20 @@ export const convertHeadingToHTMLFragment = (inlineText) => {
   )
 }
 
+/**
+ * @param {string} text Text on which to replace.
+ * @param {Object<string|RegExp,string>} replacementMap Map of strings to replace.
+ * @returns {string} Text with all the keys replaced with their respective value.
+**/
+export const replaceMap = (text, replacementMap) =>{
+  for (const key of Object.keys(replacementMap)) {
+    const replacement = replacementMap[key]
+    if (!replacement) {continue}
+    text = text.replaceAll(key,replacement)
+  }
+  return text
+}
+
 const headingTags = new Set(["h1", "h2", "h3", "h4", "h5", "h6"])
 const ignoredTokens = new Set(["heading_open", "heading_close"])
 

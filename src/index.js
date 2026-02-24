@@ -5,6 +5,7 @@ import mime from "mime"
 import { filterTokens } from "./markdownlint-rule-helpers/helpers.js"
 import {
   convertHeadingToHTMLFragment,
+  replaceMap,
   getMarkdownHeadings,
   getMarkdownIdOrAnchorNameFragments,
   isValidIntegerString,
@@ -143,13 +144,21 @@ const relativeLinksRule = {
 
         /** @type {Map<string, number>} */
         const fragments = new Map()
-
+        
+        let fragmentCountDivider = params.config["fragment-count-divider"]
+        if (! fragmentCountDivider){
+          fragmentCountDivider = '-'
+        }
+        let replacementMap = {}
+        if (params.config['replacement-map']){
+          replacementMap = params.config['replacement-map']
+        }
         const fragmentsHTML = headings.map((heading) => {
-          const fragment = convertHeadingToHTMLFragment(heading)
+          const fragment = replaceMap(convertHeadingToHTMLFragment(heading),replacementMap)
           const count = fragments.get(fragment) ?? 0
           fragments.set(fragment, count + 1)
           if (count !== 0) {
-            return `${fragment}-${count}`
+            return `${fragment}${fragmentCountDivider}${count}`
           }
           return fragment
         })
