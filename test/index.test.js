@@ -240,6 +240,16 @@ test("ensure the rule validates correctly", async (t) => {
         },
       },
       {
+        name: "should be valid with multiple existing element id fragments",
+        fixturePath:
+          "test/fixtures/valid/existing-heading-fragment-divider/existing-heading-fragment.md",
+        config: {
+          "relative-links": {
+            "fragment-index-divider": "_",
+          },
+        },
+      },
+      {
         name: "should ignore external image links",
         fixturePath: "test/fixtures/valid/ignore-external-image.md",
       },
