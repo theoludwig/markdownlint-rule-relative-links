@@ -144,12 +144,14 @@ const relativeLinksRule = {
         /** @type {Map<string, number>} */
         const fragments = new Map()
 
+        const fragmentCountDivider = params.config["fragment-index-divider"] ?? "-"
+
         const fragmentsHTML = headings.map((heading) => {
           const fragment = convertHeadingToHTMLFragment(heading)
           const count = fragments.get(fragment) ?? 0
           fragments.set(fragment, count + 1)
           if (count !== 0) {
-            return `${fragment}-${count}`
+            return `${fragment}${fragmentCountDivider}${count}`
           }
           return fragment
         })
