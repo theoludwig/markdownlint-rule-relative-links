@@ -53,7 +53,7 @@ awesome.md:3 relative-links Relative links should be valid ["./invalid.txt" shou
 - Ignore external links and absolute paths as it only checks relative links (e.g: `https://example.com/` or `/absolute/path.png`).
 - If necessary, absolute paths can be validated too, with [`root_path` configuration option](#absolute-paths).
 - Headings defined multiple times in one file, will get enumerated as `<heading><divider><count>`.
-  The divier can be customized with [`fragment-count-divider`](#divider-for-fragment-index).
+  The divider can be customized with [`fragment-count-divider`](#divider-for-fragment-index).
 
 ### Limitations
 
