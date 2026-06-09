@@ -4,7 +4,7 @@ import { getHtmlAttributeRe } from "./markdownlint-rule-helpers/helpers.js"
 
 export const markdownIt = new MarkdownIt({ html: true })
 
-export const lineFragmentRe = /^#(?:L\d+(?:C\d+)?-L\d+(?:C\d+)?|L\d+)$/
+export const lineFragmentRe = /^#(?:L\d+(?:C\d+)?-L\d+(?:C\d+)?|L\d+)$/u
 
 /**
  * Converts a Markdown heading into an HTML fragment according to the rules
@@ -125,7 +125,7 @@ export const getMarkdownIdOrAnchorNameFragments = (content) => {
  * @example isValidIntegerString("1.0") // false
  */
 export const isValidIntegerString = (value) => {
-  const regex = /^\d+$/
+  const regex = /^\d+$/u
   return regex.test(value)
 }
 
