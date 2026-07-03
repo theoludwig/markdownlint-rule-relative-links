@@ -29,7 +29,8 @@ const relativeLinksRule = {
     filterTokens(params, "inline", (token) => {
       const children = token.children ?? []
       for (const child of children) {
-        const { type, attrs, lineNumber } = child
+        const { type, lineNumber } = child
+        const attrs = child.attrs ?? []
 
         /** @type {string | undefined} */
         let hrefSrc
