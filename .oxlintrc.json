@@ -6,5 +6,8 @@
     "browser": true,
     "node": true,
     "shared-node-browser": true
+  },
+  "rules": {
+    "unicorn/prefer-number-coercion": "off"
   }
 }
