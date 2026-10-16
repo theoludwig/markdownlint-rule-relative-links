@@ -36,17 +36,17 @@
     "release": "semantic-release"
   },
   "dependencies": {
-    "markdown-it": "15.0.1",
-    "mime": "4.1.0"
+    "markdown-it": "15.0.3",
+    "mime": "4.1.1"
   },
   "devDependencies": {
-    "@types/node": "26.6.2",
+    "@types/node": "26.6.5",
     "eslint-config-conventions": "21.4.0",
-    "markdownlint": "0.41.1",
+    "markdownlint": "0.42.0",
     "markdownlint-cli2": "0.23.3",
-    "oxfmt": "0.70.0",
-    "oxlint": "1.85.0",
-    "oxlint-tsgolint": "7.0.2002",
+    "oxfmt": "0.73.0",
+    "oxlint": "1.88.0",
+    "oxlint-tsgolint": "7.0.2004",
     "semantic-release": "25.0.9",
     "typescript": "7.0.2"
   },

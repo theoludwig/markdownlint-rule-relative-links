@@ -9,7 +9,7 @@
     "allowJs": true,
     "noEmit": true,
     "rootDir": ".",
-    "skipLibCheck": true,
+    "skipLibCheck": false,
     "strict": true,
     "allowUnusedLabels": false,
     "allowUnreachableCode": false,

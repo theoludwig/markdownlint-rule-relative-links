@@ -1,4 +1,4 @@
-import type MarkdownIt from "markdown-it"
+import type { MarkdownIt } from "markdown-it"
 import type { Rule } from "markdownlint"
 
 declare const relativeLinksRule: Rule
